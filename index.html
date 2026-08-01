@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="cosmic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earth Village Business School | 地球村商学院</title>
+  <meta name="description" content="100 open courses for global citizens - Economics, Business, Aerospace, Space Economy, Cosmic Civilization, Energy and Future Technology">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+</head>
+<body>
+
+<!-- Stars Background for Cosmic Theme -->
+<canvas class="stars-bg" id="starsCanvas"></canvas>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-brand" onclick="switchSection('courses')">
+      🌍 Earth Village Business School
+      <small id="brandSubtitle">地球村商学院 · 100 Open Courses</small>
+    </div>
+    <div class="navbar-controls">
+      <!-- Language Switcher -->
+      <button class="ctrl-btn active" id="langBtn" onclick="toggleLang()">
+        <span id="langLabel">中文</span>
+      </button>
+      <!-- Theme Switcher -->
+      <div class="theme-switcher">
+        <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="星际深空 Cosmic">🌌</div>
+        <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="地球绿洲 Oasis">🌿</div>
+        <div class="theme-dot" data-theme="classic" onclick="switchTheme('classic')" title="经典商务 Classic">💼</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Nav Tabs ===== -->
+<div class="nav-tabs">
+  <div class="nav-tab active" data-section="courses" onclick="switchSection('courses')" id="tab-courses">📚 <span data-i18n="courses">100门公开课</span></div>
+  <div class="nav-tab" data-section="energy" onclick="switchSection('energy')" id="tab-energy">⚡ <span data-i18n="energy">能源学院</span></div>
+  <div class="nav-tab" data-section="books" onclick="switchSection('books')" id="tab-books">📖 <span data-i18n="books">100本能源书籍</span></div>
+  <div class="nav-tab" data-section="plan" onclick="switchSection('plan')" id="tab-plan">🗓️ <span data-i18n="plan">100天计划</span></div>
+</div>
+
+<!-- ===== Main Container ===== -->
+<div class="main-container">
+
+  <!-- ===== Courses Section ===== -->
+  <section class="section active" id="section-courses">
+    <div class="hero">
+      <h1 id="heroTitle">地球村商学院 · 100门公开课</h1>
+      <p id="heroDesc">面向地球村人类文明的100门公开课程，涵盖国际贸易、经济商业、航天太空、能源可持续发展、生命健康等碳基文明核心领域，以及人机共生协创课程与硅基文明课程。碳基与硅基文明区别分类、协同发展，适合未来500年星际太空文明的学习需求。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label" data-i18n="coursesLabel">Open Courses</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label" data-i18n="categoriesLabel">Categories</div></div>
+        <div class="hero-stat"><div class="num">500+</div><div class="label" data-i18n="yearsLabel">Years Vision</div></div>
+        <div class="hero-stat"><div class="num">2</div><div class="label" data-i18n="langLabel">Languages</div></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="courseSearch" placeholder="搜索课程名称、关键词..." data-i18n-placeholder="searchPlaceholder">
+      <select class="category-filter" id="categoryFilter" onchange="filterCourses()">
+        <option value="all" data-i18n="allCats">全部分类</option>
+        <option value="trade" data-i18n-cat="trade">🌍 地球村基石 Global Foundations</option>
+        <option value="econbiz" data-i18n-cat="econbiz">📈 经济与商业 Economics & Business</option>
+        <option value="aerospace" data-i18n-cat="aerospace">🚀 航天与太空 Aerospace & Space</option>
+        <option value="energy" data-i18n-cat="energy">⚡ 能源与可持续发展 Energy & Sustainability</option>
+        <option value="life" data-i18n-cat="life">🧬 生命与健康 Life & Health</option>
+        <option value="symbiosis" data-i18n-cat="symbiosis">🤝 人机共生协创 Human-AI Symbiosis</option>
+        <option value="silicon" data-i18n-cat="silicon">🤖 硅基文明 Silicon Civilization</option>
+      </select>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+
+    <div class="course-grid" id="courseGrid"></div>
+  </section>
+
+  <!-- ===== Energy Section ===== -->
+  <section class="section" id="section-energy">
+    <div class="hero">
+      <h1 id="energyTitle">地球村能源学院</h1>
+      <p id="energyDesc">面向全球人类自学推荐的能源公开课程，涵盖可再生能源、核能、氢能、储能、智能电网、碳管理、太空能源、石油天然气、能源地缘政治与气候变化等前沿领域。碳基文明的能源转型之路，也是通向星际文明的基石。</p>
+    </div>
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="energySearch" placeholder="搜索能源课程..." data-i18n-placeholder="energySearchPlaceholder">
+      <span class="result-count" id="energyResultCount"></span>
+    </div>
+    <div class="course-grid" id="energyGrid"></div>
+  </section>
+
+  <!-- ===== Books Section ===== -->
+  <section class="section" id="section-books">
+    <div class="hero">
+      <h1 id="booksTitle">100本能源行业书籍</h1>
+      <p id="booksDesc">为海外华商精选的100本能源行业书籍，覆盖能源通史、石油天然气、可再生能源、核能、氢能、太空能源、能源投资与商业管理。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label">Books</div></div>
+        <div class="hero-stat"><div class="num">20+</div><div class="label">Categories</div></div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="bookSearch" placeholder="搜索书名、作者..." data-i18n-placeholder="bookSearchPlaceholder">
+      <span class="result-count" id="bookResultCount"></span>
+    </div>
+    <div class="books-grid" id="booksGrid"></div>
+  </section>
+
+  <!-- ===== Study Plan Section ===== -->
+  <section class="section" id="section-plan">
+    <div class="hero">
+      <h1 id="planTitle">100天自学计划表</h1>
+      <p id="planDesc">精简版100天自学计划，10个阶段循序渐进，从经济学基础到星际文明，构建面向未来的知识体系。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label">Days</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="label">Phases</div></div>
+      </div>
+    </div>
+    <div class="plan-container" id="planContainer"></div>
+  </section>
+
+</div>
+
+<!-- ===== Course Detail Modal ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-title" id="footerTitle">🔗 Earth Village Ecosystem Links</div>
+    <div class="footer-links" id="footerLinks"></div>
+    <div class="footer-copy">
+      © 2024-2026 Earth Village Business School | 地球村商学院<br>
+      Open Knowledge for a Multi-Planetary Civilization
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Scripts ===== -->
+<script src="courses.js"></script>
+<script src="books.js"></script>
+<script src="plan.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
