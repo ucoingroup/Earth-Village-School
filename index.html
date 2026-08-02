@@ -21,9 +21,22 @@
       <small id="brandSubtitle">地球村商学院 · 100 Open Courses</small>
     </div>
     <div class="navbar-controls">
-      <button class="ctrl-btn active" id="langBtn" onclick="toggleLang()">
-        <span id="langLabel">中文</span>
-      </button>
+      <a href="ai-tools.html" class="ctrl-btn">🤖 AI工具</a>
+      <div class="lang-dropdown">
+        <button class="ctrl-btn active" id="langBtn" onclick="toggleLangMenu()">
+          <span id="langLabel">🌐 中文</span>
+          <span class="lang-arrow">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <div class="lang-option active" data-lang="zh" onclick="switchLang('zh')">🇨🇳 中文</div>
+          <div class="lang-option" data-lang="en" onclick="switchLang('en')">🇬🇧 English</div>
+          <div class="lang-option" data-lang="fr" onclick="switchLang('fr')">🇫🇷 Français</div>
+          <div class="lang-option" data-lang="es" onclick="switchLang('es')">🇪🇸 Español</div>
+          <div class="lang-option" data-lang="ar" onclick="switchLang('ar')">🇸🇦 العربية</div>
+          <div class="lang-option" data-lang="ru" onclick="switchLang('ru')">🇷🇺 Русский</div>
+          <div class="lang-option" data-lang="my" onclick="switchLang('my')">🇲🇲 မြန်မာ</div>
+        </div>
+      </div>
       <div class="theme-switcher">
         <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="星际深空 Cosmic">🌌</div>
         <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="地球绿洲 Oasis">🌿</div>
@@ -39,7 +52,9 @@
   <div class="nav-tab" data-section="bschools" onclick="switchSection('bschools')" id="tab-bschools">🎓 <span data-i18n="bschools">全球商学院</span></div>
   <div class="nav-tab" data-section="energy" onclick="switchSection('energy')" id="tab-energy">⚡ <span data-i18n="energy">能源学院</span></div>
   <div class="nav-tab" data-section="books" onclick="switchSection('books')" id="tab-books">📖 <span data-i18n="books">100本能源书籍</span></div>
+  <div class="nav-tab" data-section="wisdom" onclick="switchSection('wisdom')" id="tab-wisdom">🧠 <span data-i18n="wisdom">智慧书库</span></div>
   <div class="nav-tab" data-section="plan" onclick="switchSection('plan')" id="tab-plan">🗓️ <span data-i18n="plan">100天计划</span></div>
+  <div class="nav-tab" data-section="awakening" onclick="switchSection('awakening')" id="tab-awakening">🌅 <span data-i18n="awakening">文明觉醒</span></div>
   <div class="nav-tab" data-section="contribute" onclick="switchSection('contribute')" id="tab-contribute">🤝 <span data-i18n="contribute">共建共享</span></div>
 </div>
 
@@ -55,7 +70,7 @@
         <div class="hero-stat"><div class="num">100</div><div class="label" data-i18n="coursesLabel">公开课程</div></div>
         <div class="hero-stat"><div class="num">6</div><div class="label" data-i18n="categoriesLabel">课程板块</div></div>
         <div class="hero-stat"><div class="num">500+</div><div class="label" data-i18n="yearsLabel">年视野</div></div>
-        <div class="hero-stat"><div class="num">2</div><div class="label" data-i18n="langLabel">Languages</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label" data-i18n="langLabel">7种语言</div></div>
       </div>
     </div>
 
@@ -194,6 +209,50 @@
     </div>
   </section>
 
+  <!-- ===== Wisdom Books Section ===== -->
+  <section class="section" id="section-wisdom">
+    <div class="hero">
+      <h1 id="wisdomTitle">🧠 地球村智慧书库 · 60本经典</h1>
+      <p id="wisdomDesc">人类文明的智慧结晶，60本影响世界的经典著作，涵盖决策与判断、人际与社会、自我成长与心态、经济规律洞察、历史与文明、底层逻辑认知六大维度。每一本都是照亮前行之路的灯塔，为地球村公民提供深邃的思想资源。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">60</div><div class="label" data-i18n="wisdomBooksLabel">经典书籍</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="label" data-i18n="wisdomCatsLabel">维度分类</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label" data-i18n="wisdomLangsLabel">多语言</div></div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="wisdomSearch" placeholder="搜索书名、作者..." data-i18n-placeholder="wisdomSearchPlaceholder">
+      <select class="category-filter" id="wisdomFilter" onchange="filterWisdom()">
+        <option value="all" data-i18n="allCats3">全部分类</option>
+        <option value="decision">🧩 决策与判断 Decision</option>
+        <option value="interpersonal">👥 人际与社会 Interpersonal</option>
+        <option value="growth">🌱 自我成长与心态 Growth</option>
+        <option value="economics">💰 经济规律洞察 Economics</option>
+        <option value="history">📜 历史与文明 History</option>
+        <option value="cognition">🔬 底层逻辑认知 Cognition</option>
+      </select>
+      <span class="result-count" id="wisdomResultCount"></span>
+    </div>
+    <div class="course-grid" id="wisdomGrid"></div>
+  </section>
+
+  <!-- ===== Awakening Section ===== -->
+  <section class="section" id="section-awakening">
+    <div class="hero">
+      <h1 id="awakeningTitle">🌅 地球村人类文明觉醒</h1>
+      <p id="awakeningDesc">当人类文明从沉睡中觉醒，会发生什么？从零和博弈到正和共生，从无限增长到可持续发展，从地球封闭到星际开放——文明觉醒不是一场革命，而是人类意识的一次集体跃迁。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">12</div><div class="label" data-i18n="awakeningDimsLabel">维度变化</div></div>
+        <div class="hero-stat"><div class="num">4</div><div class="label" data-i18n="awakeningPhasesLabel">觉醒阶段</div></div>
+        <div class="hero-stat"><div class="num">∞</div><div class="label" data-i18n="awakeningFutureLabel">未来可能</div></div>
+      </div>
+    </div>
+    <div class="awakening-intro" id="awakeningIntro"></div>
+    <div class="awakening-grid" id="awakeningGrid"></div>
+    <div class="awakening-phases" id="awakeningPhases"></div>
+    <div class="awakening-conclusion" id="awakeningConclusion"></div>
+  </section>
+
 </div>
 
 <!-- ===== Course Detail Modal ===== -->
@@ -220,6 +279,8 @@
 <script src="courses.js"></script>
 <script src="bschools.js"></script>
 <script src="books.js"></script>
+<script src="wisdom-books.js"></script>
+<script src="awakening.js"></script>
 <script src="plan.js"></script>
 <script src="app.js"></script>
 
