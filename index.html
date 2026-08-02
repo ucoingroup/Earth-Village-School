@@ -21,7 +21,6 @@
       <small id="brandSubtitle">地球村商学院 · 100 Open Courses</small>
     </div>
     <div class="navbar-controls">
-      <a href="ai-tools.html" class="ctrl-btn">🤖 AI工具</a>
       <div class="lang-dropdown">
         <button class="ctrl-btn active" id="langBtn" onclick="toggleLangMenu()">
           <span id="langLabel">🌐 中文</span>
@@ -56,6 +55,7 @@
   <div class="nav-tab" data-section="plan" onclick="switchSection('plan')" id="tab-plan">🗓️ <span data-i18n="plan">100天计划</span></div>
   <div class="nav-tab" data-section="awakening" onclick="switchSection('awakening')" id="tab-awakening">🌅 <span data-i18n="awakening">文明觉醒</span></div>
   <div class="nav-tab" data-section="contribute" onclick="switchSection('contribute')" id="tab-contribute">🤝 <span data-i18n="contribute">共建共享</span></div>
+  <div class="nav-tab" data-section="ai-tools" onclick="switchSection('ai-tools')" id="tab-ai-tools">🤖 <span data-i18n="aiTools">AI工具</span></div>
 </div>
 
 <!-- ===== Main Container ===== -->
@@ -206,6 +206,70 @@
         <span id="contributeEmailLabel">公益编辑邮箱：</span>
         <a href="mailto:eaco2cc@gmail.com">eaco2cc@gmail.com</a>
       </p>
+    </div>
+  </section>
+
+  <!-- ===== AI Tools Section ===== -->
+  <section class="section" id="section-ai-tools">
+    <div class="hero">
+      <h1 id="aiToolsTitle">🤖 AI 工具集成平台</h1>
+      <p id="aiToolsDesc">集成全球前10大开源AI系统的免费额度API，为地球村学员提供智能学习助手。无需付费即可使用DeepSeek、Qwen、Llama、Gemini等顶尖AI模型，辅助课程学习、知识问答、内容创作与多语言翻译。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="aiToolsCount">AI系统</div></div>
+        <div class="hero-stat"><div class="num">Free</div><div class="label" data-i18n="aiToolsFree">免费额度</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label" data-i18n="aiToolsLangs">语言支持</div></div>
+      </div>
+    </div>
+
+    <div class="ai-tools-preview">
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🔮</div>
+        <h3 class="ai-tool-name">DeepSeek</h3>
+        <p class="ai-tool-desc">深度求索，每月500万Token免费额度</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🌐</div>
+        <h3 class="ai-tool-name">Qwen</h3>
+        <p class="ai-tool-desc">阿里云通义千问，100万Token新用户免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🦙</div>
+        <h3 class="ai-tool-name">Llama</h3>
+        <p class="ai-tool-desc">Meta开源大模型，Groq平台每日14,400次请求</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">♊</div>
+        <h3 class="ai-tool-name">Gemini</h3>
+        <p class="ai-tool-desc">Google Gemini，Flash每日1500次免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🌟</div>
+        <h3 class="ai-tool-name">GLM</h3>
+        <p class="ai-tool-desc">智谱AI，GLM-4-Flash完全免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🌪️</div>
+        <h3 class="ai-tool-name">Mistral</h3>
+        <p class="ai-tool-desc">法国Mistral AI，每月50万Token免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🎨</div>
+        <h3 class="ai-tool-name">DALL-E / SD</h3>
+        <p class="ai-tool-desc">AI图像生成，每月15张免费+本地部署</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🎙️</div>
+        <h3 class="ai-tool-name">Whisper</h3>
+        <p class="ai-tool-desc">OpenAI语音转录，Groq平台免费使用</p>
+      </div>
+    </div>
+
+    <div class="ai-tools-cta">
+      <a href="ai-tools.html" class="ai-tools-btn">
+        <span id="aiToolsBtnText">🚀 进入 AI 工具平台</span>
+      </a>
+      <p class="ai-tools-note" id="aiToolsNote">支持文本对话、图像生成、语音转录等多种AI能力</p>
+    </div>
     </div>
   </section>
 
