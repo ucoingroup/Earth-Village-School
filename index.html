@@ -21,11 +21,9 @@
       <small id="brandSubtitle">地球村商学院 · 100 Open Courses</small>
     </div>
     <div class="navbar-controls">
-      <!-- Language Switcher -->
       <button class="ctrl-btn active" id="langBtn" onclick="toggleLang()">
         <span id="langLabel">中文</span>
       </button>
-      <!-- Theme Switcher -->
       <div class="theme-switcher">
         <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="星际深空 Cosmic">🌌</div>
         <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="地球绿洲 Oasis">🌿</div>
@@ -38,9 +36,11 @@
 <!-- ===== Nav Tabs ===== -->
 <div class="nav-tabs">
   <div class="nav-tab active" data-section="courses" onclick="switchSection('courses')" id="tab-courses">📚 <span data-i18n="courses">100门公开课</span></div>
+  <div class="nav-tab" data-section="bschools" onclick="switchSection('bschools')" id="tab-bschools">🎓 <span data-i18n="bschools">全球商学院</span></div>
   <div class="nav-tab" data-section="energy" onclick="switchSection('energy')" id="tab-energy">⚡ <span data-i18n="energy">能源学院</span></div>
   <div class="nav-tab" data-section="books" onclick="switchSection('books')" id="tab-books">📖 <span data-i18n="books">100本能源书籍</span></div>
   <div class="nav-tab" data-section="plan" onclick="switchSection('plan')" id="tab-plan">🗓️ <span data-i18n="plan">100天计划</span></div>
+  <div class="nav-tab" data-section="contribute" onclick="switchSection('contribute')" id="tab-contribute">🤝 <span data-i18n="contribute">共建共享</span></div>
 </div>
 
 <!-- ===== Main Container ===== -->
@@ -50,11 +50,11 @@
   <section class="section active" id="section-courses">
     <div class="hero">
       <h1 id="heroTitle">地球村商学院 · 100门公开课</h1>
-      <p id="heroDesc">面向地球村人类文明的100门公开课程，涵盖国际贸易、经济商业、航天太空、能源可持续发展、生命健康等碳基文明核心领域，以及人机共生协创课程与硅基文明课程。碳基与硅基文明区别分类、协同发展，适合未来500年星际太空文明的学习需求。</p>
+      <p id="heroDesc">面向地球村人类文明的100门公开课程，融合高校经管课程资源，以商人视角重新设计。涵盖文明商道哲学、国际贸易跨境实业、人本组织社群治理、绿色可持续商业、全球金融风控与碳硅共生人机协同六大板块。碳基定方向，硅基做执行，碳硅共生，服务全球海外华商、新能源跨境从业者。</p>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="num">100</div><div class="label" data-i18n="coursesLabel">Open Courses</div></div>
-        <div class="hero-stat"><div class="num">7</div><div class="label" data-i18n="categoriesLabel">Categories</div></div>
-        <div class="hero-stat"><div class="num">500+</div><div class="label" data-i18n="yearsLabel">Years Vision</div></div>
+        <div class="hero-stat"><div class="num">100</div><div class="label" data-i18n="coursesLabel">公开课程</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="label" data-i18n="categoriesLabel">课程板块</div></div>
+        <div class="hero-stat"><div class="num">500+</div><div class="label" data-i18n="yearsLabel">年视野</div></div>
         <div class="hero-stat"><div class="num">2</div><div class="label" data-i18n="langLabel">Languages</div></div>
       </div>
     </div>
@@ -63,18 +63,43 @@
       <input type="text" class="search-input" id="courseSearch" placeholder="搜索课程名称、关键词..." data-i18n-placeholder="searchPlaceholder">
       <select class="category-filter" id="categoryFilter" onchange="filterCourses()">
         <option value="all" data-i18n="allCats">全部分类</option>
-        <option value="trade" data-i18n-cat="trade">🌍 地球村基石 Global Foundations</option>
-        <option value="econbiz" data-i18n-cat="econbiz">📈 经济与商业 Economics & Business</option>
-        <option value="aerospace" data-i18n-cat="aerospace">🚀 航天与太空 Aerospace & Space</option>
-        <option value="energy" data-i18n-cat="energy">⚡ 能源与可持续发展 Energy & Sustainability</option>
-        <option value="life" data-i18n-cat="life">🧬 生命与健康 Life & Health</option>
-        <option value="symbiosis" data-i18n-cat="symbiosis">🤝 人机共生协创 Human-AI Symbiosis</option>
-        <option value="silicon" data-i18n-cat="silicon">🤖 硅基文明 Silicon Civilization</option>
+        <option value="philosophy">🧭 文明商道哲学 Philosophy</option>
+        <option value="trade">🌍 国际贸易·跨境实业 Trade</option>
+        <option value="org">👥 人本组织·社群治理 Organization</option>
+        <option value="green">🌿 绿色可持续商业 Green Business</option>
+        <option value="finance">💰 全球金融·风控 Finance & Risk</option>
+        <option value="symbiosis">🤝 碳硅共生·人机协同 Symbiosis</option>
       </select>
       <span class="result-count" id="resultCount"></span>
     </div>
 
     <div class="course-grid" id="courseGrid"></div>
+  </section>
+
+  <!-- ===== Business Schools Section ===== -->
+  <section class="section" id="section-bschools">
+    <div class="hero">
+      <h1 id="bschoolsTitle">全球十大商学院 · 300门精选课程</h1>
+      <p id="bschoolsDesc">整合全球顶尖10所商学院的300门精选课程，涵盖战略管理、金融投资、市场营销、领导力、创业创新、数据分析、全球化运营等领域。为地球村学员提供世界级商科教育资源，与地球村商学院100门课程互为补充。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="bschoolsLabel">商学院</div></div>
+        <div class="hero-stat"><div class="num">300</div><div class="label" data-i18n="bschoolCoursesLabel">精选课程</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="label" data-i18n="bschoolCatsLabel">课程领域</div></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="bschoolSearch" placeholder="搜索学校或课程..." data-i18n-placeholder="bschoolSearchPlaceholder">
+      <select class="category-filter" id="bschoolFilter" onchange="filterBSchools()">
+        <option value="all" data-i18n="allSchools">全部学校</option>
+      </select>
+      <select class="category-filter" id="bschoolCatFilter" onchange="filterBSchools()">
+        <option value="all" data-i18n="allCats2">全部领域</option>
+      </select>
+      <span class="result-count" id="bschoolResultCount"></span>
+    </div>
+
+    <div class="course-grid" id="bschoolGrid"></div>
   </section>
 
   <!-- ===== Energy Section ===== -->
@@ -120,6 +145,55 @@
     <div class="plan-container" id="planContainer"></div>
   </section>
 
+  <!-- ===== Contribute Section ===== -->
+  <section class="section" id="section-contribute">
+    <div class="hero">
+      <h1 id="contributeTitle">🤝 共建共享公开课</h1>
+      <p id="contributeDesc">地球村网友们，一起来共建共享公开课！这是一个开放的公益教育平台，每个人都可以贡献知识、分享课程、参与编辑。无论你是行业专家、学者、教师，还是热心的学习者，都欢迎加入我们的公益编辑团队，共同打造面向全球人类的公开课。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100+</div><div class="label" data-i18n="contributeStats1">公开课目标</div></div>
+        <div class="hero-stat"><div class="num">∞</div><div class="label" data-i18n="contributeStats2">共建者</div></div>
+        <div class="hero-stat"><div class="num">🌍</div><div class="label" data-i18n="contributeStats3">全球开放</div></div>
+      </div>
+    </div>
+
+    <div class="contribute-grid">
+      <div class="contribute-card">
+        <div class="contribute-icon">📝</div>
+        <h3 id="contributeCard1Title">贡献课程内容</h3>
+        <p id="contributeCard1Desc">撰写新课程、优化现有课程内容、翻译中英文双语版本。每一份贡献都会让地球村的学习资源更丰富。</p>
+      </div>
+      <div class="contribute-card">
+        <div class="contribute-icon">🔍</div>
+        <h3 id="contributeCard2Title">审校与编辑</h3>
+        <p id="contributeCard2Desc">审校课程内容的准确性、时效性，确保知识质量。我们相信群体智慧能打造最好的公开课。</p>
+      </div>
+      <div class="contribute-card">
+        <div class="contribute-icon">💡</div>
+        <h3 id="contributeCard3Title">推荐选题</h3>
+        <p id="contributeCard3Desc">推荐你认为重要的课程主题，帮助地球村课程体系覆盖更多前沿领域和实用知识。</p>
+      </div>
+      <div class="contribute-card">
+        <div class="contribute-icon">🌐</div>
+        <h3 id="contributeCard4Title">多语言翻译</h3>
+        <p id="contributeCard4Desc">帮助将课程翻译成更多语言，让地球村的每一个角落都能无障碍学习。中文、英语及更多语言。</p>
+      </div>
+    </div>
+
+    <div class="contribute-cta">
+      <a href="https://ucoingroup.github.io/Earth-Village-School" target="_blank" rel="noopener" class="contribute-btn">
+        <span id="contributeBtnText">🌐 访问共建共享公开课平台</span>
+      </a>
+      <a href="mailto:eaco2cc@gmail.com" class="contribute-btn contribute-btn-email">
+        <span id="contributeEmailBtnText">✉️ 联系公益编辑邮箱</span>
+      </a>
+      <p class="contribute-email-text">
+        <span id="contributeEmailLabel">公益编辑邮箱：</span>
+        <a href="mailto:eaco2cc@gmail.com">eaco2cc@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
 </div>
 
 <!-- ===== Course Detail Modal ===== -->
@@ -144,6 +218,7 @@
 
 <!-- ===== Scripts ===== -->
 <script src="courses.js"></script>
+<script src="bschools.js"></script>
 <script src="books.js"></script>
 <script src="plan.js"></script>
 <script src="app.js"></script>
