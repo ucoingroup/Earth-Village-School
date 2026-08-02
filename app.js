@@ -29,7 +29,7 @@ const I18N = {
   zh: {
     courses: "100门公开课", bschools: "全球商学院", energy: "能源学院",
     books: "100本能源书籍", wisdom: "智慧书库", plan: "100天计划",
-    awakening: "文明觉醒", contribute: "共建共享", aiTools: "AI工具",
+    awakening: "文明觉醒", contribute: "共建共享", aiTools: "AI工具", skills: "商学院SKILL",
     coursesLabel: "公开课程", categoriesLabel: "课程板块", yearsLabel: "年视野", langLabel: "7种语言",
     bschoolsLabel: "商学院", bschoolCoursesLabel: "精选课程", bschoolCatsLabel: "课程领域",
     wisdomBooksLabel: "经典书籍", wisdomCatsLabel: "维度分类", wisdomLangsLabel: "多语言",
@@ -77,7 +77,7 @@ const I18N = {
   en: {
     courses: "100 Courses", bschools: "Global B-Schools", energy: "Energy Academy",
     books: "100 Energy Books", wisdom: "Wisdom Library", plan: "100-Day Plan",
-    awakening: "Awakening", contribute: "Co-Build", aiTools: "AI Tools",
+    awakening: "Awakening", contribute: "Co-Build", aiTools: "AI Tools", skills: "B-School Skills",
     coursesLabel: "Open Courses", categoriesLabel: "Categories", yearsLabel: "Years Vision", langLabel: "7 Languages",
     bschoolsLabel: "B-Schools", bschoolCoursesLabel: "Courses", bschoolCatsLabel: "Fields",
     wisdomBooksLabel: "Classics", wisdomCatsLabel: "Dimensions", wisdomLangsLabel: "Multilingual",
@@ -125,7 +125,7 @@ const I18N = {
   fr: {
     courses: "100 Cours", bschools: "Ecoles de Commerce", energy: "Académie de l'Énergie",
     books: "100 Livres sur l'Énergie", wisdom: "Bibliothèque de Sagesse", plan: "Plan de 100 Jours",
-    awakening: "Éveil", contribute: "Co-Construire", aiTools: "Outils AI",
+    awakening: "Éveil", contribute: "Co-Construire", aiTools: "Outils AI", skills: "Compétences B-School",
     coursesLabel: "Cours Ouverts", categoriesLabel: "Catégories", yearsLabel: "Ans de Vision", langLabel: "7 Langues",
     bschoolsLabel: "Ecoles", bschoolCoursesLabel: "Cours", bschoolCatsLabel: "Domaines",
     wisdomBooksLabel: "Classiques", wisdomCatsLabel: "Dimensions", wisdomLangsLabel: "Multilingue",
@@ -173,7 +173,7 @@ const I18N = {
   es: {
     courses: "100 Cursos", bschools: "Escuelas de Negocios", energy: "Academia de Energía",
     books: "100 Libros de Energía", wisdom: "Biblioteca de Sabiduría", plan: "Plan de 100 Días",
-    awakening: "Despertar", contribute: "Co-Construir", aiTools: "Herramientas AI",
+    awakening: "Despertar", contribute: "Co-Construir", aiTools: "Herramientas AI", skills: "Habilidades B-School",
     coursesLabel: "Cursos Abiertos", categoriesLabel: "Categorías", yearsLabel: "Años de Visión", langLabel: "7 Idiomas",
     bschoolsLabel: "Escuelas", bschoolCoursesLabel: "Cursos", bschoolCatsLabel: "Campos",
     wisdomBooksLabel: "Clásicos", wisdomCatsLabel: "Dimensiones", wisdomLangsLabel: "Multilingüe",
@@ -221,7 +221,7 @@ const I18N = {
   ar: {
     courses: "100 دورة", bschools: "مدارس الأعمال", energy: "أكاديمية الطاقة",
     books: "100 كتاب طاقة", wisdom: "مكتبة الحكمة", plan: "خطة 100 يوم",
-    awakening: "الصحوة", contribute: "بناء مشترك", aiTools: "أدوات الذكاء الاصطناعي",
+    awakening: "الصحوة", contribute: "بناء مشترك", aiTools: "أدوات الذكاء الاصطناعي", skills: "مهارات مدرسة الأعمال",
     coursesLabel: "دورات مفتوحة", categoriesLabel: "الفئات", yearsLabel: "رؤية سنوات", langLabel: "7 لغات",
     bschoolsLabel: "المدارس", bschoolCoursesLabel: "الدورات", bschoolCatsLabel: "المجالات",
     wisdomBooksLabel: "كلاسيكيات", wisdomCatsLabel: "الأبعاد", wisdomLangsLabel: "متعدد اللغات",
@@ -269,7 +269,7 @@ const I18N = {
   ru: {
     courses: "100 курсов", bschools: "Бизнес-школы", energy: "Энергетическая Академия",
     books: "100 книг по энергии", wisdom: "Библиотека Мудрости", plan: "План на 100 дней",
-    awakening: "Пробуждение", contribute: "Со-создание", aiTools: "Инструменты ИИ",
+    awakening: "Пробуждение", contribute: "Со-создание", aiTools: "Инструменты ИИ", skills: "Навыки B-Школы",
     coursesLabel: "Открытые курсы", categoriesLabel: "Категории", yearsLabel: "Лет Видения", langLabel: "7 языков",
     bschoolsLabel: "Школы", bschoolCoursesLabel: "Курсы", bschoolCatsLabel: "Области",
     wisdomBooksLabel: "Классика", wisdomCatsLabel: "Измерения", wisdomLangsLabel: "Многоязычность",
@@ -317,7 +317,7 @@ const I18N = {
   my: {
     courses: "သင်ခန်းစာ ၁၀၀", bschools: "စီးပွားရေးကျောင်းများ", energy: "စွမ်းအင်အကယ်ဒမီ",
     books: "စွမ်းအင်စာအုပ် ၁၀၀", wisdom: "ပညာဗဟုသုတကျတတ်", plan: "၁၀၀ ရက်စာမတ်",
-    awakening: "နိုးထခြင်း", contribute: "တွဲဖက်တည်ဆောက်", aiTools: "AI ကိရိယာများ",
+    awakening: "နိုးထခြင်း", contribute: "တွဲဖက်တည်ဆောက်", aiTools: "AI ကိရိယာများ", skills: "B-School ကျွမ်းကျင်မှုများ",
     coursesLabel: "ပွင့်လင်းသင်ခန်းစာများ", categoriesLabel: "အမျိုးအစားများ", yearsLabel: "နှစ်များရှုထောင့်", langLabel: "၇ ဘာသာစကား",
     bschoolsLabel: "ကျောင်းများ", bschoolCoursesLabel: "သင်ခန်းစာများ", bschoolCatsLabel: "နယ်ပယ်များ",
     wisdomBooksLabel: "အထွတ်အမြတ်", wisdomCatsLabel: "အချက်အလက်များ", wisdomLangsLabel: "ဘာသာစကားများ",
