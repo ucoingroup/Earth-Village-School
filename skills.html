@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商学院SKILL | Earth Village Business School</title>
-  <meta name="description" content="地球村商学院30组标准化SKILL清单 - 核心课程、星际文明、备用拓展三大类">
+  <title>🎯 地球村商学院 30 组标准化 SKILL</title>
+  <meta name="description" content="适配100门公开课体系，每周自动同步更新。三类技能覆盖地球村商业、星际文明拓展与通用备用赛道。">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
   <style>
@@ -307,6 +307,57 @@
       font-size: 1.1rem;
     }
 
+    /* Language Switcher */
+    .lang-switcher {
+      position: relative;
+      display: inline-block;
+    }
+    .lang-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .lang-btn:hover {
+      border-color: var(--accent);
+    }
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 100;
+      min-width: 140px;
+      overflow: hidden;
+    }
+    .lang-menu.show {
+      display: block;
+    }
+    .lang-menu a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .lang-menu a:hover {
+      background: var(--tag-bg);
+    }
+    .lang-menu a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
     @media (max-width: 768px) {
       .skills-grid { grid-template-columns: 1fr; }
       .skills-hero h1 { font-size: 1.6rem; }
@@ -322,16 +373,28 @@
 <!-- ===== Navbar ===== -->
 <nav class="navbar">
   <div class="navbar-inner">
-    <div class="navbar-brand" onclick="location.href='index.html'">
-      🌍 Earth Village Business School
-      <small>地球村商学院 · 30 Standardized SKILLs</small>
+    <div class="navbar-brand" onclick="switchSection('courses')">
+      🌍 地球村商学院
+      <small>地球村商学院 · 30组标准化SKILL</small>
     </div>
     <div class="navbar-controls">
-      <a href="index.html" class="ctrl-btn">🏠 首页</a>
+      <a href="index.html" class="ctrl-btn">🏠 返回主站</a>
       <div class="theme-switcher">
-        <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="星际深空">🌌</div>
-        <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="地球绿洲">🌿</div>
-        <div class="theme-dot" data-theme="classic" onclick="switchTheme('classic')" title="经典商务">💼</div>
+        <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="星际深空"><span>星际深空</span></div>
+        <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="地球绿洲"><span>地球绿洲</span></div>
+        <div class="theme-dot" data-theme="classic" onclick="switchTheme('classic')" title="经典商务"><span>经典商务</span></div>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLangMenu()" id="langBtnText">7种语言</button>
+        <div class="lang-menu" id="langMenu">
+          <a href="javascript:void(0)" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</a>
+          <a href="javascript:void(0)" onclick="switchLang('en')" data-lang="en">🇬🇧 English</a>
+          <a href="javascript:void(0)" onclick="switchLang('fr')" data-lang="fr">🇫🇷 Français</a>
+          <a href="javascript:void(0)" onclick="switchLang('es')" data-lang="es">🇪🇸 Español</a>
+          <a href="javascript:void(0)" onclick="switchLang('ar')" data-lang="ar">🇸🇦 العربية</a>
+          <a href="javascript:void(0)" onclick="switchLang('ru')" data-lang="ru">🇷🇺 Русский</a>
+          <a href="javascript:void(0)" onclick="switchLang('my')" data-lang="my">🇲🇲 မြန်မာ</a>
+        </div>
       </div>
     </div>
   </div>
@@ -340,7 +403,7 @@
 <!-- ===== Hero ===== -->
 <div class="skills-hero">
   <h1>🎯 地球村商学院 30 组标准化 SKILL</h1>
-  <p>适配 <a href="https://ucoingroup.github.io/Earth-Village-School/" target="_blank" rel="noopener" style="color:var(--accent)">Earth-Village-School</a> 100门公开课体系，每周自动同步更新。三类技能覆盖地球村商业、星际文明拓展与通用备用赛道。</p>
+  <p>适配100门公开课体系，每周自动同步更新。三类技能覆盖地球村商业、星际文明拓展与通用备用赛道。</p>
   <div class="skills-hero-stats">
     <div class="skills-hero-stat"><div class="num">30</div><div class="label">标准化SKILL</div></div>
     <div class="skills-hero-stat"><div class="num">3</div><div class="label">分类体系</div></div>
@@ -375,7 +438,7 @@
     <a href="https://ucoingroup.github.io/Mohist-Tech/" target="_blank" rel="noopener">🔧 Mohist Tech</a>
     <a href="https://eaco-build-world.base44.app/" target="_blank" rel="noopener">🌍 EACO Build World</a>
   </div>
-  <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.85rem;">© 2026 Earth Village Business School | 地球村商学院</p>
+  <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.85rem;"><span>© 2024-2026 地球村商学院</span> | <span>面向多行星文明的开放知识</span></p>
 </footer>
 
 <!-- ===== Detail Modal ===== -->
@@ -391,6 +454,7 @@
 </div>
 
 <!-- ===== Scripts ===== -->
+<script src="i18n.js"></script>
 <script src="skills-data.js"></script>
 <script>
 // ===== Theme =====
@@ -406,89 +470,126 @@ function switchTheme(theme) {
 const savedTheme = localStorage.getItem('ev-theme') || 'cosmic';
 switchTheme(savedTheme);
 
+// ===== Language Switcher =====
+function toggleLangMenu() {
+  var menu = document.getElementById('langMenu');
+  if (menu) menu.classList.toggle('show');
+}
+
+// Close language menu when clicking outside
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtnText');
+  if (menu && !menu.contains(e.target) && e.target !== btn) {
+    menu.classList.remove('show');
+  }
+});
+
+// Update lang button text
+function updateLangBtn() {
+  var btn = document.getElementById('langBtnText');
+  if (!btn) return;
+  var langNames = { zh: '🌐 中文', en: '🌐 English', fr: '🌐 Français', es: '🌐 Español', ar: '🌐 العربية', ru: '🌐 Русский', my: '🌐 မြန်မာ' };
+  btn.textContent = langNames[window.currentLang] || '🌐 中文';
+}
+
+// ===== i18n helper =====
+function ti(key) {
+  if (!window.I18N || !window.currentLang) return key;
+  var lang = window.currentLang;
+  var dict = window.I18N[lang] || window.I18N.zh;
+  return dict[key] || (window.I18N.en && window.I18N.en[key]) || (window.I18N.zh && window.I18N.zh[key]) || key;
+}
+
 // ===== Render Skills =====
-function renderSkills(filter = '') {
-  const container = document.getElementById('skillsContainer');
-  const lang = 'zh'; // Default Chinese, can be extended
-  const skills = SKILLS[lang] || SKILLS.zh;
-  const labels = SKILL_CAT_LABELS[lang] || SKILL_CAT_LABELS.zh;
-  const catColors = { core: '#64ffda', cosmic: '#bd93ff', backup: '#ff79c6' };
+window.renderSkills = function(filter) {
+  filter = filter || '';
+  var container = document.getElementById('skillsContainer');
+  if (!container) return;
 
-  let html = '';
-  const lowerFilter = filter.toLowerCase();
+  var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
+  var skills = SKILLS[lang] || SKILLS.zh;
+  var labels = SKILL_CAT_LABELS[lang] || SKILL_CAT_LABELS.zh;
+  var catColors = { core: '#64ffda', cosmic: '#bd93ff', backup: '#ff79c6' };
 
-  SKILL_CATEGORIES.forEach(cat => {
-    const catSkills = skills.filter(s => s.cat === cat.id);
-    const filtered = filter
-      ? catSkills.filter(s =>
-          s.id.toLowerCase().includes(lowerFilter) ||
-          s.name.toLowerCase().includes(lowerFilter) ||
-          s.desc.toLowerCase().includes(lowerFilter) ||
-          s.short.toLowerCase().includes(lowerFilter)
-        )
+  var html = '';
+  var lowerFilter = filter.toLowerCase();
+
+  SKILL_CATEGORIES.forEach(function(cat) {
+    var catSkills = skills.filter(function(s) { return s.cat === cat.id; });
+    var filtered = filter
+      ? catSkills.filter(function(s) {
+          return s.id.toLowerCase().indexOf(lowerFilter) !== -1 ||
+                 s.name.toLowerCase().indexOf(lowerFilter) !== -1 ||
+                 s.desc.toLowerCase().indexOf(lowerFilter) !== -1 ||
+                 s.short.toLowerCase().indexOf(lowerFilter) !== -1;
+        })
       : catSkills;
 
     if (filtered.length === 0 && filter) return;
 
-    html += `
-      <div class="skill-category">
-        <div class="skill-category-header">
-          <span class="icon">${cat.icon}</span>
-          <h2>${labels[cat.id]}</h2>
-          <span class="count">${filtered.length} 个SKILL</span>
-        </div>
-        <div class="skills-grid">
-          ${filtered.map(s => `
-            <div class="skill-card" style="--category-color: ${catColors[s.cat]}" onclick="openModal('${s.id}')">
-              <span class="skill-card-id">${s.id}</span>
-              <div class="skill-card-header">
-                <span class="skill-card-icon">${cat.icon}</span>
-                <h3 class="skill-card-title">${s.name}</h3>
-              </div>
-              <p class="skill-card-desc">${s.desc}</p>
-              <span class="skill-card-tag">${labels[s.cat]}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    `;
+    html += '<div class="skill-category">' +
+      '<div class="skill-category-header">' +
+        '<span class="icon">' + cat.icon + '</span>' +
+        '<h2>' + labels[cat.id] + '</h2>' +
+        '<span class="count">' + filtered.length + ' ' + ti('skillCountUnit') + '</span>' +
+      '</div>' +
+      '<div class="skills-grid">' +
+        filtered.map(function(s) {
+          return '<div class="skill-card" style="--category-color: ' + catColors[s.cat] + '" onclick="openModal(\'' + s.id + '\')">' +
+            '<span class="skill-card-id">' + s.id + '</span>' +
+            '<div class="skill-card-header">' +
+              '<span class="skill-card-icon">' + cat.icon + '</span>' +
+              '<h3 class="skill-card-title">' + s.name + '</h3>' +
+            '</div>' +
+            '<p class="skill-card-desc">' + s.desc + '</p>' +
+            '<span class="skill-card-tag">' + labels[s.cat] + '</span>' +
+          '</div>';
+        }).join('') +
+      '</div>' +
+    '</div>';
   });
 
   if (!html) {
-    html = '<div class="skills-no-results">🔍 未找到匹配的SKILL，请尝试其他关键词</div>';
+    html = '<div class="skills-no-results">' + ti('skillNoResult') + '</div>';
   }
 
   container.innerHTML = html;
-}
+};
 
 // ===== Filter =====
 function filterSkills() {
-  const input = document.getElementById('skillSearch');
-  renderSkills(input.value);
+  var input = document.getElementById('skillSearch');
+  if (input) window.renderSkills(input.value);
 }
 
 // ===== Modal =====
 function openModal(skillId) {
-  const lang = 'zh';
-  const skills = SKILLS[lang] || SKILLS.zh;
-  const skill = skills.find(s => s.id === skillId);
+  var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
+  var skills = SKILLS[lang] || SKILLS.zh;
+  var skill = skills.find(function(s) { return s.id === skillId; });
   if (!skill) return;
 
   document.getElementById('modalTitle').textContent = skill.name;
   document.getElementById('modalId').textContent = skill.id;
-  document.getElementById('modalBody').innerHTML = `
-    <div class="section-title">📝 技能释义</div>
-    <p>${skill.desc}</p>
-    <div class="section-title">🏷️ 标签</div>
-    <div class="tag-list">
-      <span class="tag">${skill.cat === 'core' ? '🌍 核心课程' : skill.cat === 'cosmic' ? '🚀 星际文明' : '🔧 备用拓展'}</span>
-      <span class="tag">标准化SKILL</span>
-      <span class="tag">每周更新</span>
-    </div>
-    <div class="section-title">🔗 标识符格式</div>
-    <p style="font-family: monospace; background: var(--bg-alt); padding: 0.8rem; border-radius: 8px; color: var(--accent);">${skill.id}</p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;">小写连字符格式，适配网页检索、学员技能标签筛选、AI课程匹配接口</p>
-  `;
+
+  var tagText = '';
+  if (skill.cat === 'core') tagText = ti('skillTagCore');
+  else if (skill.cat === 'cosmic') tagText = ti('skillTagCosmic');
+  else tagText = ti('skillTagBackup');
+
+  document.getElementById('modalBody').innerHTML =
+    '<div class="section-title">' + ti('skillModalDef') + '</div>' +
+    '<p>' + skill.desc + '</p>' +
+    '<div class="section-title">' + ti('skillModalTags') + '</div>' +
+    '<div class="tag-list">' +
+      '<span class="tag">' + tagText + '</span>' +
+      '<span class="tag">' + ti('skillTagStandard') + '</span>' +
+      '<span class="tag">' + ti('skillTagWeekly') + '</span>' +
+    '</div>' +
+    '<div class="section-title">' + ti('skillModalIdFormat') + '</div>' +
+    '<p style="font-family: monospace; background: var(--bg-alt); padding: 0.8rem; border-radius: 8px; color: var(--accent);">' + skill.id + '</p>' +
+    '<p style="margin-top: 0.5rem; font-size: 0.85rem;">' + ti('skillModalIdDesc') + '</p>';
 
   document.getElementById('skillModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -496,37 +597,64 @@ function openModal(skillId) {
 
 function closeModal(event) {
   if (event && event.target !== document.getElementById('skillModal')) return;
-  document.getElementById('skillModal').classList.remove('active');
+  var modal = document.getElementById('skillModal');
+  if (modal) modal.classList.remove('active');
   document.body.style.overflow = '';
 }
 
 // ===== Render Rules =====
 function renderRules() {
-  const lang = 'zh';
-  const rules = SKILL_UPDATE_RULES[lang] || SKILL_UPDATE_RULES.zh;
-  document.getElementById('skillsRules').innerHTML = `
-    <h3>📋 每周自动更新机制</h3>
-    <ul>
-      <li><strong>${rules.syncSource}</strong><a href="${rules.syncUrl}" target="_blank" rel="noopener">${rules.syncUrl}</a> — ${rules.syncDesc}</li>
-      <li><strong>⏰ ${rules.trigger}</strong></li>
-      <li><strong>📦 ${rules.expandRule}</strong></li>
-      <li><strong>🔍 ${rules.searchAdapter}</strong></li>
-    </ul>
-  `;
+  var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
+  var rules = SKILL_UPDATE_RULES[lang] || SKILL_UPDATE_RULES.zh;
+  var el = document.getElementById('skillsRules');
+  if (!el) return;
+  el.innerHTML =
+    '<h3>' + ti('skillRulesTitle') + '</h3>' +
+    '<ul>' +
+      '<li><strong>' + rules.syncSource + '</strong><a href="' + rules.syncUrl + '" target="_blank" rel="noopener">' + rules.syncUrl + '</a> — ' + rules.syncDesc + '</li>' +
+      '<li><strong>⏰ ' + rules.trigger + '</strong></li>' +
+      '<li><strong>📦 ' + rules.expandRule + '</strong></li>' +
+      '<li><strong>🔍 ' + rules.searchAdapter + '</strong></li>' +
+    '</ul>';
 }
+
+// ===== Apply i18n for skills page =====
+function applySkillsI18n() {
+  // Update search placeholder
+  var searchInput = document.getElementById('skillSearch');
+  if (searchInput) {
+    searchInput.setAttribute('placeholder', ti('skillSearchPh'));
+  }
+  // Update lang button
+  updateLangBtn();
+  // Update active lang menu item
+  document.querySelectorAll('#langMenu a').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('data-lang') === window.currentLang);
+  });
+  // Re-render dynamic content
+  window.renderSkills();
+  renderRules();
+}
+
+// Override applyTranslations to also update skills page
+var origApplyTranslations = window.applyTranslations || function() {};
+window.applyTranslations = function(lang) {
+  origApplyTranslations(lang);
+  applySkillsI18n();
+};
 
 // ===== Stars Animation =====
 (function initStars() {
-  const canvas = document.getElementById('starsCanvas');
+  var canvas = document.getElementById('starsCanvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height, stars = [];
+  var ctx = canvas.getContext('2d');
+  var width, height, stars = [];
 
   function resize() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
     stars = [];
-    for (let i = 0; i < 120; i++) {
+    for (var i = 0; i < 120; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -539,10 +667,10 @@ function renderRules() {
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
-    stars.forEach(s => {
+    stars.forEach(function(s) {
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+      ctx.fillStyle = 'rgba(255,255,255,' + s.alpha + ')';
       ctx.fill();
       s.y += s.speed;
       if (s.y > height) { s.y = 0; s.x = Math.random() * width; }
@@ -556,14 +684,22 @@ function renderRules() {
 })();
 
 // ===== Init =====
-renderSkills();
-renderRules();
+// Apply on DOMContentLoaded (i18n.js already does this, but we also need to apply skills-specific updates)
+document.addEventListener('DOMContentLoaded', function() {
+  applySkillsI18n();
+});
+
+// Also apply immediately if DOM is already loaded
+if (document.readyState !== 'loading') {
+  applySkillsI18n();
+}
 
 // Keyboard: ESC to close modal
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 </script>
 
+<script>window.currentLang="zh";</script>
 </body>
 </html>
