@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="cosmic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 Top 10 Systèmes AI Open-Source · Outils API Gratuits</title>
+  <meta name="description" content="Intégration des systèmes AI open-source les plus puissants, fournissant des outils AI gratuits pour les étudiants du Village Terre. Supporte la génération de texte, l'écriture de code, la création d'images, la synthèse vocale, la traduction multilingue.">
+  <link rel="stylesheet" href="ai-tools.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+
+<canvas class="stars-bg" id="starsCanvas"></canvas>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-brand" onclick="location.href='fr-index.html'">
+      🤖 <span>Village Terre · Hub d'Outils AI Open-Source</span>
+    </div>
+    <div class="navbar-controls">
+      <div class="lang-dropdown">
+        <button class="ctrl-btn active" id="langBtn" onclick="toggleLangMenu()">
+          <span id="langLabel">7 Langues</span>
+          <span class="lang-arrow">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <div class="lang-option active" data-lang="zh" onclick="switchLang('zh')">🇨🇳 中文</div>
+          <div class="lang-option" data-lang="en" onclick="switchLang('en')">🇬🇧 English</div>
+          <div class="lang-option" data-lang="fr" onclick="switchLang('fr')">🇫🇷 Français</div>
+          <div class="lang-option" data-lang="es" onclick="switchLang('es')">🇪🇸 Español</div>
+          <div class="lang-option" data-lang="ar" onclick="switchLang('ar')">🇸🇦 العربية</div>
+          <div class="lang-option" data-lang="ru" onclick="switchLang('ru')">🇷🇺 Русский</div>
+          <div class="lang-option" data-lang="my" onclick="switchLang('my')">🇲🇲 မြန်မာ</div>
+        </div>
+      </div>
+      <a href="fr-index.html" class="ctrl-btn">🏠 Retour à l'Accueil</a>
+      <div class="theme-switcher">
+        <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="Cosmique"><span style="display:none;">Cosmique</span>🌌</div>
+        <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="Oasis"><span style="display:none;">Oasis</span>🌿</div>
+        <div class="theme-dot" data-theme="classic" onclick="switchTheme('classic')" title="Classique"><span style="display:none;">Classique</span>💼</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<div class="main-container">
+  <section class="hero">
+    <h1>🤖 全球前10大开源AI系统 · 免费API工具集</h1>
+    <p>集成全球最强大的开源AI系统，为地球村商学院学员提供免费AI工具。支持文本生成、代码编写、图像创作、语音合成、多语言翻译等能力。每个AI系统都有免费额度，无需信用卡即可使用。</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">10</div><div class="label">AI系统</div></div>
+      <div class="hero-stat"><div class="num">50+</div><div class="label">能力维度</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="label">多语言</div></div>
+      <div class="hero-stat"><div class="num">∞</div><div class="label">免费额度</div></div>
+    </div>
+  </section>
+
+  <!-- ===== AI Tools Grid ===== -->
+  <div class="filter-bar">
+    <input type="text" class="search-input" id="aiSearch" placeholder="搜索AI工具名称、能力..." oninput="filterAITools()">
+    <select class="category-filter" id="aiCatFilter" onchange="filterAITools()">
+      <option value="all">全部分类</option>
+      <option value="text">📝 文本生成</option>
+      <option value="code">💻 代码生成</option>
+      <option value="image">🎨 图像创作</option>
+      <option value="voice">🔊 语音音频</option>
+      <option value="multimodal">🔮 多模态</option>
+      <option value="reasoning">🧠 推理思考</option>
+    </select>
+    <span class="result-count" id="aiResultCount"></span>
+  </div>
+
+  <div class="ai-grid" id="aiGrid"></div>
+
+  <!-- ===== Chat Interface ===== -->
+  <section class="chat-section">
+    <h2>💬 AI对话终端</h2>
+    <p>选择一个AI系统，直接在下方输入框对话。免费API额度有限，请合理使用。</p>
+    <div class="chat-controls">
+      <select id="chatProvider" class="chat-provider-select">
+        <option value="">-- 选择AI系统 --</option>
+      </select>
+      <input type="password" id="apiKey" class="api-key-input" placeholder="输入API Key（免费获取，见各卡片说明）">
+    </div>
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-message ai-message">
+        <div class="chat-avatar">🤖</div>
+        <div class="chat-content" id="chatWelcomeMsg">欢迎使用地球村商学院AI工具集！请选择一个AI系统并输入API Key开始对话。</div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" class="chat-input" placeholder="输入消息..." onkeypress="if(event.key==='Enter')sendChat()">
+      <button class="chat-send-btn" onclick="sendChat()">发送</button>
+      <button class="chat-clear-btn" onclick="clearChat()">清空</button>
+    </div>
+  </section>
+
+  <!-- ===== 10 People Plan ===== -->
+  <section class="people-plan-section">
+    <h2>🌍 探索10个人的地球村商学院方案</h2>
+    <p>10个人如何构建一个完整的地球村商学院？以下是角色分工与技术方案参考。</p>
+    <div class="people-grid" id="peopleGrid"></div>
+  </section>
+
+  <!-- ===== Course Tech Reference ===== -->
+  <section class="tech-ref-section">
+    <h2>📚 课程技术参考</h2>
+    <p>地球村商学院课程体系使用的技术栈与工具参考。</p>
+    <div class="tech-grid" id="techGrid"></div>
+  </section>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-title">🔗 Liens de l'Écosystème du Village Terre</div>
+    <div class="footer-links" id="footerLinks"></div>
+    <div class="footer-copy">
+      <span>© 2024-2026 École de Commerce du Village Terre</span><br>
+      <span>Connaissance Ouverte pour une Civilisation Multi-Planétaire</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Modal ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="i18n.js"></script>
+<script src="ai-tools-data.js"></script>
+<script src="ai-tools-app.js"></script>
+
+<script>
+// Override switchLang to redirect to corresponding language file
+(function() {
+  var pageName = 'ai-tools';
+  var currentLang = 'fr';
+  // Set language immediately
+  try { localStorage.setItem('ev-lang', currentLang); } catch(e) {}
+  window.currentLang = currentLang;
+
+  // Wait for switchLang to be defined, then override it
+  var checkCount = 0;
+  var interval = setInterval(function() {
+    checkCount++;
+    if (typeof switchLang === 'function' || checkCount > 50) {
+      clearInterval(interval);
+      // Override switchLang to redirect
+      window.switchLang = function(targetLang) {
+        try { localStorage.setItem('ev-lang', targetLang); } catch(e) {}
+        var prefix = targetLang === 'zh' ? '' : (targetLang + '-');
+        window.location.href = prefix + pageName + '.html';
+      };
+      // Update active state in dropdown
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.lang-option, #langMenu a').forEach(function(el) {
+          var dl = el.getAttribute('data-lang');
+          if (dl) {
+            el.classList.toggle('active', dl === currentLang);
+            el.setAttribute('onclick', "switchLang('" + dl + "')");
+          }
+        });
+      });
+    }
+  }, 10);
+})();
+</script>
+</body>
+</html>
