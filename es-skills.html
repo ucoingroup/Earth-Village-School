@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="cosmic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎯 Pueblo Tierra 30 Habilidades Estandarizadas</title>
+  <meta name="description" content="Adaptado a 100 cursos abiertos, sincronizado automáticamente cada semana. Tres categorías que cubren negocios del Pueblo Tierra, civilización interestelar y pistas de respaldo.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+  <style>
+    /* ===== SKILL Page Specific Styles ===== */
+    .skills-hero {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+    }
+    .skills-hero h1 {
+      font-size: 2.2rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+    .skills-hero p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+    .skills-hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .skills-hero-stat {
+      text-align: center;
+    }
+    .skills-hero-stat .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .skills-hero-stat .label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Search */
+    .skills-search {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      padding: 0 1.5rem;
+    }
+    .skills-search input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--search-bg);
+      color: var(--text);
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .skills-search input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(100,255,218,0.15);
+    }
+    .skills-search input::placeholder {
+      color: var(--text-dim);
+    }
+
+    /* Category Section */
+    .skill-category {
+      margin-bottom: 3rem;
+      padding: 0 1.5rem;
+    }
+    .skill-category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .skill-category-header .icon {
+      font-size: 1.8rem;
+    }
+    .skill-category-header h2 {
+      font-size: 1.4rem;
+      color: var(--text);
+      margin: 0;
+    }
+    .skill-category-header .count {
+      margin-left: auto;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: var(--tag-bg);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* Skill Cards Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.2rem;
+    }
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-hover);
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--category-color, var(--accent));
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+    .skill-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .skill-card-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .skill-card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .skill-card-id {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-family: 'Courier New', monospace;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .skill-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .skill-card-tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* Update Rules Section */
+    .skills-rules {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .skills-rules h3 {
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .skills-rules ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .skills-rules li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .skills-rules li:last-child {
+      border-bottom: none;
+    }
+    .skills-rules li strong {
+      color: var(--text);
+    }
+    .skills-rules a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    .skills-rules a:hover {
+      text-decoration: underline;
+    }
+
+    /* Detail Modal */
+    .skill-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .skill-modal-overlay.active {
+      display: flex;
+    }
+    .skill-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+    .skill-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .skill-modal-close:hover {
+      color: var(--text);
+    }
+    .skill-modal-header {
+      margin-bottom: 1.5rem;
+    }
+    .skill-modal-header h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin: 0 0 0.5rem;
+    }
+    .skill-modal-header .id {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-family: 'Courier New', monospace;
+    }
+    .skill-modal-body {
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+    .skill-modal-body .section-title {
+      font-weight: 600;
+      color: var(--text);
+      margin: 1.2rem 0 0.5rem;
+      font-size: 0.95rem;
+    }
+    .skill-modal-body .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .skill-modal-body .tag {
+      padding: 0.3rem 0.8rem;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* No Results */
+    .skills-no-results {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      position: relative;
+      display: inline-block;
+    }
+    .lang-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+    .lang-btn:hover {
+      border-color: var(--accent);
+    }
+    .lang-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 0.4rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 100;
+      min-width: 140px;
+      overflow: hidden;
+    }
+    .lang-menu.show {
+      display: block;
+    }
+    .lang-menu a {
+      display: block;
+      padding: 0.6rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+    .lang-menu a:hover {
+      background: var(--tag-bg);
+    }
+    .lang-menu a.active {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .skills-hero h1 { font-size: 1.6rem; }
+      .skill-category { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Stars Background -->
+<canvas class="stars-bg" id="starsCanvas"></canvas>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-brand" onclick="switchSection('courses')">
+      🌍 Escuela de Negocios del Pueblo Tierra
+      <small>Pueblo Tierra · 30 Habilidades Estandarizadas</small>
+    </div>
+    <div class="navbar-controls">
+      <a href="es-index.html" class="ctrl-btn">🏠 Volver al Inicio</a>
+      <div class="theme-switcher">
+        <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="Cósmico"><span>Cósmico</span></div>
+        <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="Oasis"><span>Oasis</span></div>
+        <div class="theme-dot" data-theme="classic" onclick="switchTheme('classic')" title="Clásico"><span>Clásico</span></div>
+      </div>
+      <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLangMenu()" id="langBtnText">7 Idiomas</button>
+        <div class="lang-menu" id="langMenu">
+          <a href="javascript:void(0)" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</a>
+          <a href="javascript:void(0)" onclick="switchLang('en')" data-lang="en">🇬🇧 English</a>
+          <a href="javascript:void(0)" onclick="switchLang('fr')" data-lang="fr">🇫🇷 Français</a>
+          <a href="javascript:void(0)" onclick="switchLang('es')" data-lang="es">🇪🇸 Español</a>
+          <a href="javascript:void(0)" onclick="switchLang('ar')" data-lang="ar">🇸🇦 العربية</a>
+          <a href="javascript:void(0)" onclick="switchLang('ru')" data-lang="ru">🇷🇺 Русский</a>
+          <a href="javascript:void(0)" onclick="switchLang('my')" data-lang="my">🇲🇲 မြန်မာ</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<div class="skills-hero">
+  <h1>🎯 Escuela de Negocios del Pueblo Tierra · 30 Habilidades Estandarizadas</h1>
+  <p>Adaptado a 100 cursos abiertos, sincronizado automáticamente cada semana. Tres categorías que cubren negocios del Pueblo Tierra, civilización interestelar y pistas de respaldo.</p>
+  <div class="skills-hero-stats">
+    <div class="skills-hero-stat"><div class="num">30</div><div class="label">Habilidades</div></div>
+    <div class="skills-hero-stat"><div class="num">3</div><div class="label">Categorías</div></div>
+    <div class="skills-hero-stat"><div class="num">10+10+10</div><div class="label">Distribución</div></div>
+    <div class="skills-hero-stat"><div class="num">∞</div><div class="label">Iterativo</div></div>
+  </div>
+</div>
+
+<!-- ===== Search ===== -->
+<div class="skills-search">
+  <input type="text" id="skillSearch" placeholder="🔍 Buscar ID de habilidad, nombre, palabras clave..." oninput="filterSkills()">
+</div>
+
+<!-- ===== Skills Container ===== -->
+<div id="skillsContainer"></div>
+
+<!-- ===== Update Rules ===== -->
+<div class="skills-rules" id="skillsRules"></div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer" style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 3rem;">
+  <p style="color: var(--text-muted); margin-bottom: 1rem;">🔗 Enlaces del Ecosistema del Pueblo Tierra</p>
+  <div class="footer-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
+    <a href="https://ucoingroup.github.io/earths-best-coin/" target="_blank" rel="noopener">🪙 Earth's Best Coin</a>
+    <a href="https://ucoingroup.github.io/eaco50rate/" target="_blank" rel="noopener">📊 EACO 50 Rate</a>
+    <a href="https://ucoingroup.github.io/100WaysToWealth/" target="_blank" rel="noopener">💰 100 Ways to Wealth</a>
+    <a href="https://ucoingroup.github.io/earth-100-friends/" target="_blank" rel="noopener">🤝 Earth 100 Friends</a>
+    <a href="https://ucoingroup.github.io/eacoSWAP/" target="_blank" rel="noopener">🔄 EACO SWAP</a>
+    <a href="https://ucoingroup.github.io/good-books/" target="_blank" rel="noopener">📚 Good Books</a>
+    <a href="https://ucoingroup.github.io/eur-eaco/" target="_blank" rel="noopener">🇪🇺 EUR-EACO</a>
+    <a href="https://ucoingroup.github.io/au-trade/" target="_blank" rel="noopener">🇦🇺 AU Trade</a>
+    <a href="https://ucoingroup.github.io/Mohist-Tech/" target="_blank" rel="noopener">🔧 Mohist Tech</a>
+    <a href="https://eaco-build-world.base44.app/" target="_blank" rel="noopener">🌍 EACO Build World</a>
+  </div>
+  <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.85rem;"><span>© 2024-2026 Escuela de Negocios del Pueblo Tierra</span> | <span>Conocimiento Abierto para una Civilización Multi-Planetaria</span></p>
+</footer>
+
+<!-- ===== Detail Modal ===== -->
+<div class="skill-modal-overlay" id="skillModal" onclick="closeModal(event)">
+  <div class="skill-modal" onclick="event.stopPropagation()">
+    <button class="skill-modal-close" onclick="closeModal()">✕</button>
+    <div class="skill-modal-header">
+      <h2 id="modalTitle"></h2>
+      <span class="id" id="modalId"></span>
+    </div>
+    <div class="skill-modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== Scripts ===== -->
+<script src="i18n.js"></script>
+<script src="skills-data.js"></script>
+<script>
+// ===== Theme =====
+function switchTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('ev-theme', theme);
+  document.querySelectorAll('.theme-dot').forEach(d => {
+    d.classList.toggle('active', d.getAttribute('data-theme') === theme);
+  });
+}
+
+// Init theme
+const savedTheme = localStorage.getItem('ev-theme') || 'cosmic';
+switchTheme(savedTheme);
+
+// ===== Language Switcher =====
+function toggleLangMenu() {
+  var menu = document.getElementById('langMenu');
+  if (menu) menu.classList.toggle('show');
+}
+
+// Close language menu when clicking outside
+document.addEventListener('click', function(e) {
+  var menu = document.getElementById('langMenu');
+  var btn = document.getElementById('langBtnText');
+  if (menu && !menu.contains(e.target) && e.target !== btn) {
+    menu.classList.remove('show');
+  }
+});
+
+// Update lang button text
+function updateLangBtn() {
+  var btn = document.getElementById('langBtnText');
+  if (!btn) return;
+  var langNames = { zh: '🌐 中文', en: '🌐 English', fr: '🌐 Français', es: '🌐 Español', ar: '🌐 العربية', ru: '🌐 Русский', my: '🌐 မြန်မာ' };
+  btn.textContent = langNames[window.currentLang] || '🌐 中文';
+}
+
+// ===== i18n helper =====
+function ti(key) {
+  if (!window.I18N || !window.currentLang) return key;
+  var lang = window.currentLang;
+  var dict = window.I18N[lang] || window.I18N.zh;
+  return dict[key] || (window.I18N.en && window.I18N.en[key]) || (window.I18N.zh && window.I18N.zh[key]) || key;
+}
+
+// ===== Render Skills =====
+window.renderSkills = function(filter) {
+  filter = filter || '';
+  var container = document.getElementById('skillsContainer');
+  if (!container) return;
+
+  var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
+  var skills = SKILLS[lang] || SKILLS.zh;
+  var labels = SKILL_CAT_LABELS[lang] || SKILL_CAT_LABELS.zh;
+  var catColors = { core: '#64ffda', cosmic: '#bd93ff', backup: '#ff79c6' };
+
+  var html = '';
+  var lowerFilter = filter.toLowerCase();
+
+  SKILL_CATEGORIES.forEach(function(cat) {
+    var catSkills = skills.filter(function(s) { return s.cat === cat.id; });
+    var filtered = filter
+      ? catSkills.filter(function(s) {
+          return s.id.toLowerCase().indexOf(lowerFilter) !== -1 ||
+                 s.name.toLowerCase().indexOf(lowerFilter) !== -1 ||
+                 s.desc.toLowerCase().indexOf(lowerFilter) !== -1 ||
+                 s.short.toLowerCase().indexOf(lowerFilter) !== -1;
+        })
+      : catSkills;
+
+    if (filtered.length === 0 && filter) return;
+
+    html += '<div class="skill-category">' +
+      '<div class="skill-category-header">' +
+        '<span class="icon">' + cat.icon + '</span>' +
+        '<h2>' + labels[cat.id] + '</h2>' +
+        '<span class="count">' + filtered.length + ' ' + ti('skillCountUnit') + '</span>' +
+      '</div>' +
+      '<div class="skills-grid">' +
+        filtered.map(function(s) {
+          return '<div class="skill-card" style="--category-color: ' + catColors[s.cat] + '" onclick="openModal(\'' + s.id + '\')">' +
+            '<span class="skill-card-id">' + s.id + '</span>' +
+            '<div class="skill-card-header">' +
+              '<span class="skill-card-icon">' + cat.icon + '</span>' +
+              '<h3 class="skill-card-title">' + s.name + '</h3>' +
+            '</div>' +
+            '<p class="skill-card-desc">' + s.desc + '</p>' +
+            '<span class="skill-card-tag">' + labels[s.cat] + '</span>' +
+          '</div>';
+        }).join('') +
+      '</div>' +
+    '</div>';
+  });
+
+  if (!html) {
+    html = '<div class="skills-no-results">' + ti('skillNoResult') + '</div>';
+  }
+
+  container.innerHTML = html;
+};
+
+// ===== Filter =====
+function filterSkills() {
+  var input = document.getElementById('skillSearch');
+  if (input) window.renderSkills(input.value);
+}
+
+// ===== Modal =====
+function openModal(skillId) {
+  var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
+  var skills = SKILLS[lang] || SKILLS.zh;
+  var skill = skills.find(function(s) { return s.id === skillId; });
+  if (!skill) return;
+
+  document.getElementById('modalTitle').textContent = skill.name;
+  document.getElementById('modalId').textContent = skill.id;
+
+  var tagText = '';
+  if (skill.cat === 'core') tagText = ti('skillTagCore');
+  else if (skill.cat === 'cosmic') tagText = ti('skillTagCosmic');
+  else tagText = ti('skillTagBackup');
+
+  document.getElementById('modalBody').innerHTML =
+    '<div class="section-title">' + ti('skillModalDef') + '</div>' +
+    '<p>' + skill.desc + '</p>' +
+    '<div class="section-title">' + ti('skillModalTags') + '</div>' +
+    '<div class="tag-list">' +
+      '<span class="tag">' + tagText + '</span>' +
+      '<span class="tag">' + ti('skillTagStandard') + '</span>' +
+      '<span class="tag">' + ti('skillTagWeekly') + '</span>' +
+    '</div>' +
+    '<div class="section-title">' + ti('skillModalIdFormat') + '</div>' +
+    '<p style="font-family: monospace; background: var(--bg-alt); padding: 0.8rem; border-radius: 8px; color: var(--accent);">' + skill.id + '</p>' +
+    '<p style="margin-top: 0.5rem; font-size: 0.85rem;">' + ti('skillModalIdDesc') + '</p>';
+
+  document.getElementById('skillModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(event) {
+  if (event && event.target !== document.getElementById('skillModal')) return;
+  var modal = document.getElementById('skillModal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===== Render Rules =====
+function renderRules() {
+  var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
+  var rules = SKILL_UPDATE_RULES[lang] || SKILL_UPDATE_RULES.zh;
+  var el = document.getElementById('skillsRules');
+  if (!el) return;
+  el.innerHTML =
+    '<h3>' + ti('skillRulesTitle') + '</h3>' +
+    '<ul>' +
+      '<li><strong>' + rules.syncSource + '</strong><a href="' + rules.syncUrl + '" target="_blank" rel="noopener">' + rules.syncUrl + '</a> — ' + rules.syncDesc + '</li>' +
+      '<li><strong>⏰ ' + rules.trigger + '</strong></li>' +
+      '<li><strong>📦 ' + rules.expandRule + '</strong></li>' +
+      '<li><strong>🔍 ' + rules.searchAdapter + '</strong></li>' +
+    '</ul>';
+}
+
+// ===== Apply i18n for skills page =====
+function applySkillsI18n() {
+  // Update search placeholder
+  var searchInput = document.getElementById('skillSearch');
+  if (searchInput) {
+    searchInput.setAttribute('placeholder', ti('skillSearchPh'));
+  }
+  // Update lang button
+  updateLangBtn();
+  // Update active lang menu item
+  document.querySelectorAll('#langMenu a').forEach(function(a) {
+    a.classList.toggle('active', a.getAttribute('data-lang') === window.currentLang);
+  });
+  // Re-render dynamic content
+  window.renderSkills();
+  renderRules();
+}
+
+// Override applyTranslations to also update skills page
+var origApplyTranslations = window.applyTranslations || function() {};
+window.applyTranslations = function(lang) {
+  origApplyTranslations(lang);
+  applySkillsI18n();
+};
+
+// ===== Stars Animation =====
+(function initStars() {
+  var canvas = document.getElementById('starsCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var width, height, stars = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    stars = [];
+    for (var i = 0; i < 120; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.5 + 0.5,
+        speed: Math.random() * 0.3 + 0.1,
+        alpha: Math.random() * 0.5 + 0.3
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+    stars.forEach(function(s) {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + s.alpha + ')';
+      ctx.fill();
+      s.y += s.speed;
+      if (s.y > height) { s.y = 0; s.x = Math.random() * width; }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+})();
+
+// ===== Init =====
+// Apply on DOMContentLoaded (i18n.js already does this, but we also need to apply skills-specific updates)
+document.addEventListener('DOMContentLoaded', function() {
+  applySkillsI18n();
+});
+
+// Also apply immediately if DOM is already loaded
+if (document.readyState !== 'loading') {
+  applySkillsI18n();
+}
+
+// Keyboard: ESC to close modal
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+
+<script>
+// Override switchLang to redirect to corresponding language file
+(function() {
+  var pageName = 'skills';
+  var currentLang = 'es';
+  // Set language immediately
+  try { localStorage.setItem('ev-lang', currentLang); } catch(e) {}
+  window.currentLang = currentLang;
+
+  // Wait for switchLang to be defined, then override it
+  var checkCount = 0;
+  var interval = setInterval(function() {
+    checkCount++;
+    if (typeof switchLang === 'function' || checkCount > 50) {
+      clearInterval(interval);
+      // Override switchLang to redirect
+      window.switchLang = function(targetLang) {
+        try { localStorage.setItem('ev-lang', targetLang); } catch(e) {}
+        var prefix = targetLang === 'zh' ? '' : (targetLang + '-');
+        window.location.href = prefix + pageName + '.html';
+      };
+      // Update active state in dropdown
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.lang-option, #langMenu a').forEach(function(el) {
+          var dl = el.getAttribute('data-lang');
+          if (dl) {
+            el.classList.toggle('active', dl === currentLang);
+            el.setAttribute('onclick', "switchLang('" + dl + "')");
+          }
+        });
+      });
+    }
+  }, 10);
+})();
+</script>
+</body>
+</html>
