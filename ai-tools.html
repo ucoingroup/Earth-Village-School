@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🤖 全球前10大开源AI系统 · 免费API工具集</title>
-  <meta name="description" content="集成全球最强大的开源AI系统，为地球村商学院学员提供免费AI工具。支持文本生成、代码编写、图像创作、语音合成、多语言翻译等能力。每个AI系统都有免费额度，无需信用卡即可使用。">
+  <title>🤖 全球前10大开源人工智能系统 · 免费接口工具集</title>
+  <meta name="description" content="集成全球最强大的开源人工智能系统，为地球村商学院学员提供免费人工智能工具。支持文本生成、代码编写、图像创作、语音合成、多语言翻译等能力。每个系统都有免费额度，无需信用卡即可使用。">
   <link rel="stylesheet" href="ai-tools.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 </head>
@@ -16,7 +16,7 @@
 <nav class="navbar">
   <div class="navbar-inner">
     <div class="navbar-brand" onclick="location.href='index.html'">
-      🤖 <span>地球村商学院 · 全球开源AI工具集</span>
+      🤖 <span>地球村商学院 · 全球开源人工智能工具集</span>
     </div>
     <div class="navbar-controls">
       <div class="lang-dropdown">
@@ -26,12 +26,12 @@
         </button>
         <div class="lang-menu" id="langMenu">
           <div class="lang-option active" data-lang="zh" onclick="switchLang('zh')">🇨🇳 中文</div>
-          <div class="lang-option" data-lang="en" onclick="switchLang('en')">🇬🇧 English</div>
-          <div class="lang-option" data-lang="fr" onclick="switchLang('fr')">🇫🇷 Français</div>
-          <div class="lang-option" data-lang="es" onclick="switchLang('es')">🇪🇸 Español</div>
-          <div class="lang-option" data-lang="ar" onclick="switchLang('ar')">🇸🇦 العربية</div>
-          <div class="lang-option" data-lang="ru" onclick="switchLang('ru')">🇷🇺 Русский</div>
-          <div class="lang-option" data-lang="my" onclick="switchLang('my')">🇲🇲 မြန်မာ</div>
+          <div class="lang-option" data-lang="en" onclick="switchLang('en')">🇬🇧 英语</div>
+          <div class="lang-option" data-lang="fr" onclick="switchLang('fr')">🇫🇷 法语</div>
+          <div class="lang-option" data-lang="es" onclick="switchLang('es')">🇪🇸 西班牙语</div>
+          <div class="lang-option" data-lang="ar" onclick="switchLang('ar')">🇸🇦 阿拉伯语</div>
+          <div class="lang-option" data-lang="ru" onclick="switchLang('ru')">🇷🇺 俄语</div>
+          <div class="lang-option" data-lang="my" onclick="switchLang('my')">🇲🇲 缅甸语</div>
         </div>
       </div>
       <a href="index.html" class="ctrl-btn">🏠 返回主站</a>
@@ -50,7 +50,7 @@
     <h1>🤖 全球前10大开源AI系统 · 免费API工具集</h1>
     <p>集成全球最强大的开源AI系统，为地球村商学院学员提供免费AI工具。支持文本生成、代码编写、图像创作、语音合成、多语言翻译等能力。每个AI系统都有免费额度，无需信用卡即可使用。</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="num">10</div><div class="label">AI系统</div></div>
+      <div class="hero-stat"><div class="num">10</div><div class="label">人工智能系统</div></div>
       <div class="hero-stat"><div class="num">50+</div><div class="label">能力维度</div></div>
       <div class="hero-stat"><div class="num">7</div><div class="label">多语言</div></div>
       <div class="hero-stat"><div class="num">∞</div><div class="label">免费额度</div></div>
@@ -59,7 +59,7 @@
 
   <!-- ===== AI工具网格 ===== -->
   <div class="filter-bar">
-    <input type="text" class="search-input" id="aiSearch" placeholder="搜索AI工具名称、能力..." oninput="filterAITools()">
+    <input type="text" class="search-input" id="aiSearch" placeholder="搜索人工智能工具名称、能力..." oninput="filterAITools()">
     <select class="category-filter" id="aiCatFilter" onchange="filterAITools()">
       <option value="all">全部分类</option>
       <option value="text">📝 文本生成</option>
@@ -76,18 +76,18 @@
 
   <!-- ===== 对话界面 ===== -->
   <section class="chat-section">
-    <h2>💬 AI对话终端</h2>
-    <p>选择一个AI系统，直接在下方输入框对话。免费API额度有限，请合理使用。</p>
+    <h2>💬 人工智能对话终端</h2>
+    <p>选择一个人工智能系统，直接在下方输入框对话。免费接口额度有限，请合理使用。</p>
     <div class="chat-controls">
       <select id="chatProvider" class="chat-provider-select">
-        <option value="">-- 选择AI系统 --</option>
+        <option value="">-- 选择人工智能系统 --</option>
       </select>
-      <input type="password" id="apiKey" class="api-key-input" placeholder="输入API Key（免费获取，见各卡片说明）">
+      <input type="password" id="apiKey" class="api-key-input" placeholder="输入接口密钥（免费获取，见各卡片说明）">
     </div>
     <div class="chat-window" id="chatWindow">
       <div class="chat-message ai-message">
         <div class="chat-avatar">🤖</div>
-        <div class="chat-content" id="chatWelcomeMsg">欢迎使用地球村商学院AI工具集！请选择一个AI系统并输入API Key开始对话。</div>
+        <div class="chat-content" id="chatWelcomeMsg">欢迎使用地球村商学院人工智能工具集！请选择一个人工智能系统并输入接口密钥开始对话。</div>
       </div>
     </div>
     <div class="chat-input-area">
