@@ -852,7 +852,7 @@ function renderCourses(filterText, filterCat) {
     const cat = getLocalized(c, 'cat', currentLang);
     const desc = getLocalized(c, 'desc', currentLang);
     const tags = currentLang === 'zh' ? (c.tags_cn || c.tags_en || []) : (c.tags_en || c.tags_cn || []);
-    const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
+    const altTitle = currentLang === 'zh' ? c.title_cn : (c.title_en || c.title_cn);
     return `
       <div class="course-card" data-cat="${c.cat}" onclick="showCourseDetail(${c.id})">
         <div class="course-num">${c.id}</div>
@@ -930,7 +930,7 @@ function renderBSchools(filterText, filterSchool, filterCat) {
     const cat = getLocalized(c, 'cat', currentLang);
     const desc = getLocalized(c, 'desc', currentLang);
     const school = currentLang === 'zh' ? (c.school_cn || c.school_en) : (c.school_en || c.school_cn);
-    const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
+    const altTitle = currentLang === 'zh' ? c.title_cn : (c.title_en || c.title_cn);
     return `
       <div class="course-card bschool-card" data-cat="${c.cat}">
         <div class="course-num">${c.id}</div>
@@ -976,7 +976,7 @@ function renderEnergyCourses(filterText) {
     const cat = getLocalized(c, 'cat', currentLang);
     const desc = getLocalized(c, 'desc', currentLang);
     const tags = currentLang === 'zh' ? (c.tags_cn || c.tags_en || []) : (c.tags_en || c.tags_cn || []);
-    const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
+    const altTitle = currentLang === 'zh' ? c.title_cn : (c.title_en || c.title_cn);
     return `
       <div class="course-card" data-cat="${c.cat}" onclick="showCourseDetail(${c.id})">
         <div class="course-num">${c.id}</div>
@@ -1007,7 +1007,7 @@ function showCourseDetail(id) {
   const detail = getLocalized(c, 'detail', currentLang) || getLocalized(c, 'desc', currentLang);
   const desc = getLocalized(c, 'desc', currentLang);
   const tags = currentLang === 'zh' ? (c.tags_cn || c.tags_en || []) : (c.tags_en || c.tags_cn || []);
-  const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
+  const altTitle = currentLang === 'zh' ? c.title_cn : (c.title_en || c.title_cn);
 
   document.getElementById('modalBody').innerHTML = `
     <div class="modal-cat">${cat}</div>
@@ -1105,7 +1105,7 @@ function renderWisdom(filterText, filterCat) {
     const cat = getLocalized(b, 'cat', currentLang);
     const desc = getLocalized(b, 'desc', currentLang);
     const author = currentLang === 'en' ? (b.author_en || b.author_cn || '') : (b.author_cn || b.author_en || '');
-    const altTitle = currentLang === 'en' ? (b.title_cn || '') : (b.title_en || '');
+    const altTitle = currentLang === 'zh' ? (b.title_cn || '') : (b.title_en || b.title_cn || '');
     const tags = currentLang === 'en' ? (b.tags_en || []) : (b.tags_cn || []);
     return `
       <div class="course-card wisdom-card" data-cat="${b.cat}" onclick="showWisdomDetail(${b.id})">
@@ -1138,7 +1138,7 @@ function showWisdomDetail(id) {
   const desc = getLocalized(b, 'desc', currentLang);
   const detail = getLocalized(b, 'detail', currentLang) || desc;
   const author = currentLang === 'en' ? (b.author_en || b.author_cn || '') : (b.author_cn || b.author_en || '');
-  const altTitle = currentLang === 'en' ? (b.title_cn || '') : (b.title_en || '');
+  const altTitle = currentLang === 'zh' ? (b.title_cn || '') : (b.title_en || b.title_cn || '');
   const tags = currentLang === 'en' ? (b.tags_en || []) : (b.tags_cn || []);
 
   document.getElementById('modalBody').innerHTML = `
