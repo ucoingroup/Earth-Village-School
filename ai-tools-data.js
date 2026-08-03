@@ -52,7 +52,7 @@ const AI_TOOLS = [
     cat: "text",
     cat_cn: "文本生成",
     cat_en: "Text",
-    desc_cn: "智谱AI开源大模型，GLM-4系列支持多模态理解、代码生成、搜索增强。ChatGLM系列完全开源。",
+    desc_cn: "智谱人工智能开源大模型，GLM-4系列支持多模态理解、代码生成、搜索增强。ChatGLM系列完全开源。",
     desc_en: "Zhipu AI's open-source LLM. GLM-4 series supports multimodal understanding, code generation, and search augmentation. ChatGLM series fully open.",
     features_cn: ["多模态", "搜索增强", "代码生成", "Agent", "中英双语"],
     features_en: ["Multimodal", "Search Augmented", "Code Gen", "Agent", "Bilingual"],
@@ -92,7 +92,7 @@ const AI_TOOLS = [
     cat: "text",
     cat_cn: "文本生成",
     cat_en: "Text",
-    desc_cn: "法国Mistral AI开源大模型，擅长欧洲多语言。Mixtral 8x7B采用MoE架构，效率高、速度快。",
+    desc_cn: "法国Mistral人工智能开源大模型，擅长欧洲多语言。Mixtral 8x7B采用MoE架构，效率高、速度快。",
     desc_en: "French Mistral AI's open-source LLM, excelling at European languages. Mixtral 8x7B uses MoE architecture for high efficiency and speed.",
     features_cn: ["欧洲多语言", "MoE架构", "代码生成", "函数调用", "快速推理"],
     features_en: ["European Languages", "MoE Architecture", "Code Gen", "Function Calling", "Fast Inference"],
@@ -172,7 +172,7 @@ const AI_TOOLS = [
     cat: "image",
     cat_cn: "图像创作",
     cat_en: "Image",
-    desc_cn: "Stability AI开源的图像生成模型，SDXL和SD3系列支持高分辨率图像生成。完全开源可本地部署。",
+    desc_cn: "Stability人工智能开源的图像生成模型，SDXL和SD3系列支持高分辨率图像生成。完全开源可本地部署。",
     desc_en: "Stability AI's open-source image generation model. SDXL and SD3 series support high-resolution image generation. Fully open source for local deployment.",
     features_cn: ["文生图", "图生图", "开源权重", "ControlNet", "本地部署"],
     features_en: ["Text-to-Image", "Image-to-Image", "Open Weights", "ControlNet", "Local Deploy"],
@@ -217,7 +217,7 @@ const PEOPLE_PLAN = [
   },
   {
     id: 3, avatar: "💻", role: "全栈工程师", title: "Full-Stack Developer",
-    tasks_cn: ["开发维护网站前端", "搭建后端API服务", "集成AI工具API", "部署网站到GitHub Pages"]
+    tasks_cn: ["开发维护网站前端", "搭建后端接口服务", "集成人工智能工具接口", "部署网站到GitHub Pages"]
   },
   {
     id: 4, avatar: "🎨", role: "UI/UX设计师", title: "Designer",
@@ -241,7 +241,7 @@ const PEOPLE_PLAN = [
   },
   {
     id: 9, avatar: "🤖", role: "AI工具集成师", title: "AI Integration Engineer",
-    tasks_cn: ["集成10大开源AI系统API", "开发AI对话终端", "设计课程AI助手", "维护API密钥安全"]
+    tasks_cn: ["集成10大开源人工智能系统接口", "开发人工智能对话终端", "设计课程人工智能助手", "维护API密钥安全"]
   },
   {
     id: 10, avatar: "📣", role: "社群运营 / 推广", title: "Community Manager",
@@ -268,7 +268,7 @@ const TECH_REFS = [
   },
   {
     icon: "🤖", title: "AI工具集成", title_en: "AI Integration",
-    desc_cn: "集成10大开源AI系统API，支持文本生成、代码、图像、语音、多模态。",
+    desc_cn: "集成10大开源人工智能系统接口，支持文本生成、代码、图像、语音、多模态。",
     tools: ["OpenAI Compatible API", "REST API", "Fetch API", "SSE Streaming"]
   },
   {
