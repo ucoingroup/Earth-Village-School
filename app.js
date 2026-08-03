@@ -816,8 +816,8 @@ function switchSection(section) {
 function getLocalized(item, field, lang) {
   const key = field + '_' + lang;
   if (item[key]) return item[key];
-  // Fallback to zh then en
-  if (item[field + '_zh']) return item[field + '_zh'];
+  // Fallback: for zh try _cn (Chinese data convention), then _en
+  if (lang === 'zh' && item[field + '_cn']) return item[field + '_cn'];
   if (item[field + '_en']) return item[field + '_en'];
   return '';
 }
