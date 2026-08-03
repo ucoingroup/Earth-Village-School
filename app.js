@@ -9,6 +9,12 @@ let currentLang = 'zh';
 let currentSection = 'courses';
 let currentTheme = 'cosmic';
 
+// ===== Use i18n.js I18N if available, otherwise fall back to built-in =====
+if (typeof window.I18N !== 'undefined') {
+  // i18n.js already defined window.I18N with all keys
+  // Use it directly by reference
+}
+
 // ===== Language Labels =====
 const LANG_LABELS = {
   zh: '🇨🇳 中文',
@@ -25,7 +31,8 @@ const LANG_HTML_LANG = {
 };
 
 // ===== I18n Strings =====
-const I18N = {
+// If i18n.js is loaded, use its more complete I18N; otherwise use built-in fallback
+const I18N = (typeof window.I18N !== 'undefined') ? window.I18N : {
   zh: {
     courses: "100门公开课", bschools: "全球商学院", energy: "能源学院",
     books: "100本能源书籍", wisdom: "智慧书库", plan: "100天计划",
@@ -72,7 +79,36 @@ const I18N = {
     results: "条结果", noResults: "未找到匹配结果，请尝试其他关键词。",
     expand: "展开", collapse: "收起", brandSubtitle: "地球村商学院 · 100门公开课",
     readMore: "查看详情", awakeningIntro: "文明觉醒导言", awakeningPhasesTitle: "觉醒四阶段",
-    awakeningConclusionTitle: "结语"
+    awakeningConclusionTitle: "结语",
+    cat_philosophy: "🧭 文明商道哲学",
+    cat_trade: "🌍 国际贸易·跨境实业",
+    cat_org: "👥 人本组织·社群治理",
+    cat_green: "🌿 绿色可持续商业",
+    cat_finance: "💰 全球金融·风控",
+    cat_symbiosis: "🤝 碳硅共生·人机协同",
+    cat_decision: "🧩 决策与判断",
+    cat_interpersonal: "👥 人际与社会",
+    cat_growth: "🌱 自我成长与心态",
+    cat_economics2: "💰 经济规律洞察",
+    cat_history: "📜 历史与文明",
+    cat_cognition: "🔬 底层逻辑认知",
+    booksCount: "书籍",
+    booksCats: "分类",
+    planDays: "天数",
+    planPhases: "阶段",
+    footerCopy: "© 2024-2026 地球村商学院 | Earth Village Business School",
+    footerSub: "面向多行星文明的开放知识",
+    themeCosmic: "星际深空",
+    themeOasis: "地球绿洲",
+    themeClassic: "经典商务",
+    aiToolDesc1: "深度求索，每月500万Token免费额度",
+    aiToolDesc2: "阿里云通义千问，100万Token新用户免费",
+    aiToolDesc3: "Meta开源大模型，Groq平台每日14,400次请求",
+    aiToolDesc4: "Google Gemini，Flash每日1500次免费",
+    aiToolDesc5: "智谱AI，GLM-4-Flash完全免费",
+    aiToolDesc6: "法国Mistral AI，每月50万Token免费",
+    aiToolDesc7: "AI图像生成，每月15张免费+本地部署",
+    aiToolDesc8: "OpenAI语音转录，Groq平台免费使用"
   },
   en: {
     courses: "100 Courses", bschools: "Global B-Schools", energy: "Energy Academy",
@@ -120,7 +156,36 @@ const I18N = {
     results: "results", noResults: "No matching results found. Try different keywords.",
     expand: "Expand", collapse: "Collapse", brandSubtitle: "Earth Village · 100 Open Courses",
     readMore: "Read More", awakeningIntro: "Awakening Introduction", awakeningPhasesTitle: "Four Phases of Awakening",
-    awakeningConclusionTitle: "Conclusion"
+    awakeningConclusionTitle: "Conclusion",
+    cat_philosophy: "🧭 Civilization Philosophy",
+    cat_trade: "🌍 International Trade",
+    cat_org: "👥 Human-Centered Organization",
+    cat_green: "🌿 Green Sustainable Business",
+    cat_finance: "💰 Global Finance & Risk",
+    cat_symbiosis: "🤝 Carbon-Silicon Symbiosis",
+    cat_decision: "🧩 Decision-Making",
+    cat_interpersonal: "👥 Interpersonal & Social",
+    cat_growth: "🌱 Self-Growth",
+    cat_economics2: "💰 Economic Insight",
+    cat_history: "📜 History & Civilization",
+    cat_cognition: "🔬 Cognitive Foundations",
+    booksCount: "Books",
+    booksCats: "Categories",
+    planDays: "Days",
+    planPhases: "Phases",
+    footerCopy: "© 2024-2026 Earth Village Business School",
+    footerSub: "Open Knowledge for a Multi-Planetary Civilization",
+    themeCosmic: "Cosmic",
+    themeOasis: "Oasis",
+    themeClassic: "Classic",
+    aiToolDesc1: "DeepSeek, 5M tokens/month free",
+    aiToolDesc2: "Alibaba Qwen, 1M tokens free for new users",
+    aiToolDesc3: "Meta open-source LLM, 14,400 requests/day via Groq",
+    aiToolDesc4: "Google Gemini, 1500 free requests/day",
+    aiToolDesc5: "Zhipu AI, GLM-4-Flash completely free",
+    aiToolDesc6: "Mistral AI (France), 500K tokens/month free",
+    aiToolDesc7: "AI image generation, 15 free images/month + local deploy",
+    aiToolDesc8: "OpenAI Whisper, free via Groq platform"
   },
   fr: {
     courses: "100 Cours", bschools: "Ecoles de Commerce", energy: "Académie de l'Énergie",
@@ -168,7 +233,36 @@ const I18N = {
     results: "résultats", noResults: "Aucun résultat trouvé. Essayez d'autres mots-clés.",
     expand: "Développer", collapse: "Réduire", brandSubtitle: "Village Terre · 100 Cours Ouverts",
     readMore: "Lire Plus", awakeningIntro: "Introduction à l'Éveil", awakeningPhasesTitle: "Quatre Phases d'Éveil",
-    awakeningConclusionTitle: "Conclusion"
+    awakeningConclusionTitle: "Conclusion",
+    cat_philosophy: "🧭 Civilization Philosophy",
+    cat_trade: "🌍 International Trade",
+    cat_org: "👥 Human-Centered Organization",
+    cat_green: "🌿 Green Sustainable Business",
+    cat_finance: "💰 Global Finance & Risk",
+    cat_symbiosis: "🤝 Carbon-Silicon Symbiosis",
+    cat_decision: "🧩 Decision-Making",
+    cat_interpersonal: "👥 Interpersonal & Social",
+    cat_growth: "🌱 Self-Growth",
+    cat_economics2: "💰 Economic Insight",
+    cat_history: "📜 History & Civilization",
+    cat_cognition: "🔬 Cognitive Foundations",
+    booksCount: "Books",
+    booksCats: "Categories",
+    planDays: "Days",
+    planPhases: "Phases",
+    footerCopy: "© 2024-2026 Earth Village Business School",
+    footerSub: "Open Knowledge for a Multi-Planetary Civilization",
+    themeCosmic: "Cosmic",
+    themeOasis: "Oasis",
+    themeClassic: "Classic",
+    aiToolDesc1: "DeepSeek, 5M tokens/month free",
+    aiToolDesc2: "Alibaba Qwen, 1M tokens free for new users",
+    aiToolDesc3: "Meta open-source LLM, 14,400 requests/day via Groq",
+    aiToolDesc4: "Google Gemini, 1500 free requests/day",
+    aiToolDesc5: "Zhipu AI, GLM-4-Flash completely free",
+    aiToolDesc6: "Mistral AI (France), 500K tokens/month free",
+    aiToolDesc7: "AI image generation, 15 free images/month + local deploy",
+    aiToolDesc8: "OpenAI Whisper, free via Groq platform"
   },
   es: {
     courses: "100 Cursos", bschools: "Escuelas de Negocios", energy: "Academia de Energía",
@@ -216,7 +310,36 @@ const I18N = {
     results: "resultados", noResults: "No se encontraron resultados. Pruebe otras palabras clave.",
     expand: "Expandir", collapse: "Contraer", brandSubtitle: "Pueblo Tierra · 100 Cursos Abiertos",
     readMore: "Leer Más", awakeningIntro: "Introducción al Despertar", awakeningPhasesTitle: "Cuatro Fases del Despertar",
-    awakeningConclusionTitle: "Conclusión"
+    awakeningConclusionTitle: "Conclusión",
+    cat_philosophy: "🧭 Civilization Philosophy",
+    cat_trade: "🌍 International Trade",
+    cat_org: "👥 Human-Centered Organization",
+    cat_green: "🌿 Green Sustainable Business",
+    cat_finance: "💰 Global Finance & Risk",
+    cat_symbiosis: "🤝 Carbon-Silicon Symbiosis",
+    cat_decision: "🧩 Decision-Making",
+    cat_interpersonal: "👥 Interpersonal & Social",
+    cat_growth: "🌱 Self-Growth",
+    cat_economics2: "💰 Economic Insight",
+    cat_history: "📜 History & Civilization",
+    cat_cognition: "🔬 Cognitive Foundations",
+    booksCount: "Books",
+    booksCats: "Categories",
+    planDays: "Days",
+    planPhases: "Phases",
+    footerCopy: "© 2024-2026 Earth Village Business School",
+    footerSub: "Open Knowledge for a Multi-Planetary Civilization",
+    themeCosmic: "Cosmic",
+    themeOasis: "Oasis",
+    themeClassic: "Classic",
+    aiToolDesc1: "DeepSeek, 5M tokens/month free",
+    aiToolDesc2: "Alibaba Qwen, 1M tokens free for new users",
+    aiToolDesc3: "Meta open-source LLM, 14,400 requests/day via Groq",
+    aiToolDesc4: "Google Gemini, 1500 free requests/day",
+    aiToolDesc5: "Zhipu AI, GLM-4-Flash completely free",
+    aiToolDesc6: "Mistral AI (France), 500K tokens/month free",
+    aiToolDesc7: "AI image generation, 15 free images/month + local deploy",
+    aiToolDesc8: "OpenAI Whisper, free via Groq platform"
   },
   ar: {
     courses: "100 دورة", bschools: "مدارس الأعمال", energy: "أكاديمية الطاقة",
@@ -264,7 +387,36 @@ const I18N = {
     results: "نتائج", noResults: "لم يتم العثور على نتائج. جرب كلمات رئيسية أخرى.",
     expand: "توسيع", collapse: "طي", brandSubtitle: "قرية الأرض · 100 دورة مفتوحة",
     readMore: "اقرأ المزيد", awakeningIntro: "مقدمة الصحوة", awakeningPhasesTitle: "أربع مراحل الصحوة",
-    awakeningConclusionTitle: "الخاتمة"
+    awakeningConclusionTitle: "الخاتمة",
+    cat_philosophy: "🧭 Civilization Philosophy",
+    cat_trade: "🌍 International Trade",
+    cat_org: "👥 Human-Centered Organization",
+    cat_green: "🌿 Green Sustainable Business",
+    cat_finance: "💰 Global Finance & Risk",
+    cat_symbiosis: "🤝 Carbon-Silicon Symbiosis",
+    cat_decision: "🧩 Decision-Making",
+    cat_interpersonal: "👥 Interpersonal & Social",
+    cat_growth: "🌱 Self-Growth",
+    cat_economics2: "💰 Economic Insight",
+    cat_history: "📜 History & Civilization",
+    cat_cognition: "🔬 Cognitive Foundations",
+    booksCount: "Books",
+    booksCats: "Categories",
+    planDays: "Days",
+    planPhases: "Phases",
+    footerCopy: "© 2024-2026 Earth Village Business School",
+    footerSub: "Open Knowledge for a Multi-Planetary Civilization",
+    themeCosmic: "Cosmic",
+    themeOasis: "Oasis",
+    themeClassic: "Classic",
+    aiToolDesc1: "DeepSeek, 5M tokens/month free",
+    aiToolDesc2: "Alibaba Qwen, 1M tokens free for new users",
+    aiToolDesc3: "Meta open-source LLM, 14,400 requests/day via Groq",
+    aiToolDesc4: "Google Gemini, 1500 free requests/day",
+    aiToolDesc5: "Zhipu AI, GLM-4-Flash completely free",
+    aiToolDesc6: "Mistral AI (France), 500K tokens/month free",
+    aiToolDesc7: "AI image generation, 15 free images/month + local deploy",
+    aiToolDesc8: "OpenAI Whisper, free via Groq platform"
   },
   ru: {
     courses: "100 курсов", bschools: "Бизнес-школы", energy: "Энергетическая Академия",
@@ -312,7 +464,36 @@ const I18N = {
     results: "результатов", noResults: "Результаты не найдены. Попробуйте другие ключевые слова.",
     expand: "Развернуть", collapse: "Свернуть", brandSubtitle: "Деревня Земли · 100 открытых курсов",
     readMore: "Читать далее", awakeningIntro: "Введение в Пробуждение", awakeningPhasesTitle: "Четыре фазы пробуждения",
-    awakeningConclusionTitle: "Заключение"
+    awakeningConclusionTitle: "Заключение",
+    cat_philosophy: "🧭 Civilization Philosophy",
+    cat_trade: "🌍 International Trade",
+    cat_org: "👥 Human-Centered Organization",
+    cat_green: "🌿 Green Sustainable Business",
+    cat_finance: "💰 Global Finance & Risk",
+    cat_symbiosis: "🤝 Carbon-Silicon Symbiosis",
+    cat_decision: "🧩 Decision-Making",
+    cat_interpersonal: "👥 Interpersonal & Social",
+    cat_growth: "🌱 Self-Growth",
+    cat_economics2: "💰 Economic Insight",
+    cat_history: "📜 History & Civilization",
+    cat_cognition: "🔬 Cognitive Foundations",
+    booksCount: "Books",
+    booksCats: "Categories",
+    planDays: "Days",
+    planPhases: "Phases",
+    footerCopy: "© 2024-2026 Earth Village Business School",
+    footerSub: "Open Knowledge for a Multi-Planetary Civilization",
+    themeCosmic: "Cosmic",
+    themeOasis: "Oasis",
+    themeClassic: "Classic",
+    aiToolDesc1: "DeepSeek, 5M tokens/month free",
+    aiToolDesc2: "Alibaba Qwen, 1M tokens free for new users",
+    aiToolDesc3: "Meta open-source LLM, 14,400 requests/day via Groq",
+    aiToolDesc4: "Google Gemini, 1500 free requests/day",
+    aiToolDesc5: "Zhipu AI, GLM-4-Flash completely free",
+    aiToolDesc6: "Mistral AI (France), 500K tokens/month free",
+    aiToolDesc7: "AI image generation, 15 free images/month + local deploy",
+    aiToolDesc8: "OpenAI Whisper, free via Groq platform"
   },
   my: {
     courses: "သင်ခန်းစာ ၁၀၀", bschools: "စီးပွားရေးကျောင်းများ", energy: "စွမ်းအင်အကယ်ဒမီ",
@@ -360,7 +541,36 @@ const I18N = {
     results: "ရလဒ်များ", noResults: "ရလဒ်မတွေ့ပါ။ အခြားစကားအသုံးအနှုန်းများစမ်းကြည့်ပါ။",
     expand: "ဖွင့်", collapse: "ပိတ်", brandSubtitle: "ကမ္ဘာကြီးရွာ · ပွင့်လင်းသင်ခန်းစာ ၁၀၀",
     readMore: "ထပ်မတင်ကြည့်", awakeningIntro: "နိုးထခြင်းဆိုင်ရာ", awakeningPhasesTitle: "နိုးထခြင်းအဆင့်လေးဆင့်",
-    awakeningConclusionTitle: "နိဂုံး"
+    awakeningConclusionTitle: "နိဂုံး",
+    cat_philosophy: "🧭 Civilization Philosophy",
+    cat_trade: "🌍 International Trade",
+    cat_org: "👥 Human-Centered Organization",
+    cat_green: "🌿 Green Sustainable Business",
+    cat_finance: "💰 Global Finance & Risk",
+    cat_symbiosis: "🤝 Carbon-Silicon Symbiosis",
+    cat_decision: "🧩 Decision-Making",
+    cat_interpersonal: "👥 Interpersonal & Social",
+    cat_growth: "🌱 Self-Growth",
+    cat_economics2: "💰 Economic Insight",
+    cat_history: "📜 History & Civilization",
+    cat_cognition: "🔬 Cognitive Foundations",
+    booksCount: "Books",
+    booksCats: "Categories",
+    planDays: "Days",
+    planPhases: "Phases",
+    footerCopy: "© 2024-2026 Earth Village Business School",
+    footerSub: "Open Knowledge for a Multi-Planetary Civilization",
+    themeCosmic: "Cosmic",
+    themeOasis: "Oasis",
+    themeClassic: "Classic",
+    aiToolDesc1: "DeepSeek, 5M tokens/month free",
+    aiToolDesc2: "Alibaba Qwen, 1M tokens free for new users",
+    aiToolDesc3: "Meta open-source LLM, 14,400 requests/day via Groq",
+    aiToolDesc4: "Google Gemini, 1500 free requests/day",
+    aiToolDesc5: "Zhipu AI, GLM-4-Flash completely free",
+    aiToolDesc6: "Mistral AI (France), 500K tokens/month free",
+    aiToolDesc7: "AI image generation, 15 free images/month + local deploy",
+    aiToolDesc8: "OpenAI Whisper, free via Groq platform"
   }
 };
 
@@ -547,6 +757,37 @@ function applyI18n() {
   setText('footerTitle', 'footerTitle');
   setText('brandSubtitle', 'brandSubtitle');
 
+  // Update theme dot titles
+  document.querySelectorAll('.theme-dot').forEach(dot => {
+    const theme = dot.getAttribute('data-theme');
+    const titleKey = theme === 'cosmic' ? 'themeCosmic' : theme === 'oasis' ? 'themeOasis' : 'themeClassic';
+    if (t[titleKey]) dot.title = t[titleKey];
+  });
+
+  // Update select option labels
+  document.querySelectorAll('select option[data-i18n]').forEach(opt => {
+    const key = opt.getAttribute('data-i18n');
+    if (t[key]) opt.textContent = t[key];
+  });
+
+  // Update AI tool card descriptions
+  document.querySelectorAll('.ai-tool-desc[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+
+  // Update footer copyright
+  document.querySelectorAll('[data-i18n="footerCopy"]').forEach(el => { if (t.footerCopy) el.textContent = t.footerCopy; });
+  document.querySelectorAll('[data-i18n="footerSub"]').forEach(el => { if (t.footerSub) el.textContent = t.footerSub; });
+
+  // Update plan days/phases labels (rendered dynamically)
+  document.querySelectorAll('.phase-days-label').forEach(el => {
+    el.textContent = t.planDays || '天数';
+  });
+  document.querySelectorAll('.phase-phases-label').forEach(el => {
+    el.textContent = t.planPhases || '阶段';
+  });
+
   document.documentElement.lang = LANG_HTML_LANG[currentLang] || 'zh-CN';
 }
 
@@ -610,8 +851,8 @@ function renderCourses(filterText, filterCat) {
     const title = getLocalized(c, 'title', currentLang);
     const cat = getLocalized(c, 'cat', currentLang);
     const desc = getLocalized(c, 'desc', currentLang);
-    const tags = currentLang === 'en' ? (c.tags_en || []) : (c.tags_cn || []);
-    const altTitle = currentLang === 'en' ? c.title_cn : c.title_en;
+    const tags = currentLang === 'zh' ? (c.tags_cn || c.tags_en || []) : (c.tags_en || c.tags_cn || []);
+    const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
     return `
       <div class="course-card" data-cat="${c.cat}" onclick="showCourseDetail(${c.id})">
         <div class="course-num">${c.id}</div>
@@ -688,8 +929,8 @@ function renderBSchools(filterText, filterSchool, filterCat) {
     const title = getLocalized(c, 'title', currentLang);
     const cat = getLocalized(c, 'cat', currentLang);
     const desc = getLocalized(c, 'desc', currentLang);
-    const school = currentLang === 'en' ? c.school_en : c.school_cn;
-    const altTitle = currentLang === 'en' ? c.title_cn : c.title_en;
+    const school = currentLang === 'zh' ? (c.school_cn || c.school_en) : (c.school_en || c.school_cn);
+    const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
     return `
       <div class="course-card bschool-card" data-cat="${c.cat}">
         <div class="course-num">${c.id}</div>
@@ -734,8 +975,8 @@ function renderEnergyCourses(filterText) {
     const title = getLocalized(c, 'title', currentLang);
     const cat = getLocalized(c, 'cat', currentLang);
     const desc = getLocalized(c, 'desc', currentLang);
-    const tags = currentLang === 'en' ? (c.tags_en || []) : (c.tags_cn || []);
-    const altTitle = currentLang === 'en' ? c.title_cn : c.title_en;
+    const tags = currentLang === 'zh' ? (c.tags_cn || c.tags_en || []) : (c.tags_en || c.tags_cn || []);
+    const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
     return `
       <div class="course-card" data-cat="${c.cat}" onclick="showCourseDetail(${c.id})">
         <div class="course-num">${c.id}</div>
@@ -765,8 +1006,8 @@ function showCourseDetail(id) {
   const cat = getLocalized(c, 'cat', currentLang);
   const detail = getLocalized(c, 'detail', currentLang) || getLocalized(c, 'desc', currentLang);
   const desc = getLocalized(c, 'desc', currentLang);
-  const tags = currentLang === 'en' ? (c.tags_en || []) : (c.tags_cn || []);
-  const altTitle = currentLang === 'en' ? c.title_cn : c.title_en;
+  const tags = currentLang === 'zh' ? (c.tags_cn || c.tags_en || []) : (c.tags_en || c.tags_cn || []);
+  const altTitle = currentLang === 'zh' ? (c.title_en || c.title_cn) : (c.title_cn || c.title_en);
 
   document.getElementById('modalBody').innerHTML = `
     <div class="modal-cat">${cat}</div>
@@ -923,7 +1164,7 @@ function showWisdomDetail(id) {
 function renderAwakening() {
   if (typeof AWAKENING === 'undefined') return;
   const t = I18N[currentLang] || I18N.zh;
-  const isEn = currentLang === 'en';
+  const isEn = currentLang !== 'zh';
 
   // Intro
   const introEl = document.getElementById('awakeningIntro');
@@ -1009,7 +1250,7 @@ function renderAwakening() {
 // ===== Render Study Plan =====
 function renderPlan() {
   const container = document.getElementById('planContainer');
-  const isEn = currentLang === 'en';
+  const isEn = currentLang !== 'zh';
   const t = I18N[currentLang] || I18N.zh;
 
   container.innerHTML = STUDY_PLAN.map((p, idx) => {
@@ -1032,7 +1273,7 @@ function renderPlan() {
             <div class="phase-num">${p.phase}</div>
             <div>
               <h3>${phaseTitle}</h3>
-              <div class="phase-days">${isEn ? 'Days' : '天数'} ${p.days}</div>
+              <div class="phase-days"><span class="phase-days-label">${t.planDays || '天数'}</span> ${p.days}</div>
             </div>
           </div>
           <span class="ctrl-btn">${t.expand}</span>
