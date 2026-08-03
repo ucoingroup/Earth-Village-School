@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="my" data-theme="cosmic">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ကမ္ဘာ့ကျေးရွာစီးပွားရေးကျောင်း · ဖွင့်ဟသင်တန်း ၁၀၀</title>
+  <meta name="description" content="ကမ္ဘာ့ကျေးရွာလူ့ယဉ်ကျေးမှုအတွက် ဖွင့်ဟသင်တန်း ၁၀၀၊ တက္ကသိုလ်စီးပွားရေးသင်ရိုးညွှန်းတမ်းရင်းမြစ်များကို ကုန်သည်ရှုထောင့်မှ ပြန်လည်ဒီဇိုင်းဆွဲထားသည်။ ခြောက်ကဏ္ဍ: လူမျိုးရေးယဉ်ကျေးမှုဒဿန၊ နိုင်ငံတကာကုန်သွယ်ရေး၊ လူလယ်ဖွဲ့စည်းမှု၊ စိမ်းလမ်းသောစီးပွားရေး၊ ကမ္ဘာ့ဘဏ္ဍာရေး၊ ကာဗွန်-ဆီလီကွန်အတူယှဉ်တည်ရှိမှု။">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+</head>
+<body>
+
+<!-- Stars Background for Cosmic Theme -->
+<canvas class="stars-bg" id="starsCanvas"></canvas>
+
+<!-- ===== Navbar ===== -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-brand" onclick="switchSection('courses')">
+      🌍 ကမ္ဘာ့ကျေးရွာစီးပွားရေးကျောင်း
+      <small id="brandSubtitle">地球村商学院 · 100门公开课</small>
+    </div>
+    <div class="navbar-controls">
+      <div class="lang-dropdown">
+        <button class="ctrl-btn active" id="langBtn" onclick="toggleLangMenu()">
+          <span id="langLabel">၇ ဘာသာစကား</span>
+          <span class="lang-arrow">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <div class="lang-option active" data-lang="zh" onclick="switchLang('zh')">🇨🇳 中文</div>
+          <div class="lang-option" data-lang="en" onclick="switchLang('en')">🇬🇧 English</div>
+          <div class="lang-option" data-lang="fr" onclick="switchLang('fr')">🇫🇷 Français</div>
+          <div class="lang-option" data-lang="es" onclick="switchLang('es')">🇪🇸 Español</div>
+          <div class="lang-option" data-lang="ar" onclick="switchLang('ar')">🇸🇦 العربية</div>
+          <div class="lang-option" data-lang="ru" onclick="switchLang('ru')">🇷🇺 Русский</div>
+          <div class="lang-option" data-lang="my" onclick="switchLang('my')">🇲🇲 မြန်မာ</div>
+        </div>
+      </div>
+      <div class="theme-switcher">
+        <div class="theme-dot active" data-theme="cosmic" onclick="switchTheme('cosmic')" title="ကော့စမစ်"><span style="display:none;">ကော့စမစ်</span>🌌</div>
+        <div class="theme-dot" data-theme="oasis" onclick="switchTheme('oasis')" title="အိုအဆစ်"><span style="display:none;">အိုအဆစ်</span>🌿</div>
+        <div class="theme-dot" data-theme="classic" onclick="switchTheme('classic')" title="ကလပ်ဆစ်"><span style="display:none;">ကလပ်ဆစ်</span>💼</div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== Nav Tabs ===== -->
+<div class="nav-tabs">
+  <div class="nav-tab active" data-section="courses" onclick="switchSection('courses')" id="tab-courses">📚 <span>100门公开课</span></div>
+  <div class="nav-tab" data-section="bschools" onclick="switchSection('bschools')" id="tab-bschools">🎓 <span>全球商学院</span></div>
+  <div class="nav-tab" data-section="energy" onclick="switchSection('energy')" id="tab-energy">⚡ <span>能源学院</span></div>
+  <div class="nav-tab" data-section="books" onclick="switchSection('books')" id="tab-books">📖 <span>100本能源书籍</span></div>
+  <div class="nav-tab" data-section="wisdom" onclick="switchSection('wisdom')" id="tab-wisdom">🧠 <span>智慧书库</span></div>
+  <div class="nav-tab" data-section="plan" onclick="switchSection('plan')" id="tab-plan">🗓️ <span>100天计划</span></div>
+  <div class="nav-tab" data-section="awakening" onclick="switchSection('awakening')" id="tab-awakening">🌅 <span>文明觉醒</span></div>
+  <div class="nav-tab" data-section="contribute" onclick="switchSection('contribute')" id="tab-contribute">🤝 <span>共建共享</span></div>
+  <div class="nav-tab" data-section="ai-tools" onclick="switchSection('ai-tools')" id="tab-ai-tools">🤖 <span>AI工具</span></div>
+  <a href="my-skills.html" class="nav-tab" style="text-decoration:none;">🎯 <span>商学院SKILL</span></a>
+</div>
+
+<!-- ===== Main Container ===== -->
+<div class="main-container">
+
+  <!-- ===== Courses Section ===== -->
+  <section class="section active" id="section-courses">
+    <div class="hero">
+      <h1 id="heroTitle">地球村商学院 · 100门公开课</h1>
+      <p id="heroDesc">面向地球村人类文明的100门公开课程，融合高校经管课程资源，以商人视角重新设计。涵盖文明商道哲学、国际贸易跨境实业、人本组织社群治理、绿色可持续商业、全球金融风控与碳硅共生人机协同六大板块。碳基定方向，硅基做执行，碳硅共生，服务全球海外华商、新能源跨境从业者。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label">公开课程</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="label">课程板块</div></div>
+        <div class="hero-stat"><div class="num">500+</div><div class="label">年视野</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label">၇ ဘာသာစကား</div></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="courseSearch" placeholder="搜索课程名称、关键词...">
+      <select class="category-filter" id="categoryFilter" onchange="filterCourses()">
+        <option value="all">全部分类</option>
+        <option value="philosophy">🧭 文明商道哲学</option>
+        <option value="trade">🌍 国际贸易·跨境实业</option>
+        <option value="org">👥 人本组织·社群治理</option>
+        <option value="green">🌿 绿色可持续商业</option>
+        <option value="finance">💰 全球金融·风控</option>
+        <option value="symbiosis">🤝 碳硅共生·人机协同</option>
+      </select>
+      <span class="result-count" id="resultCount"></span>
+    </div>
+
+    <div class="course-grid" id="courseGrid"></div>
+  </section>
+
+  <!-- ===== Business Schools Section ===== -->
+  <section class="section" id="section-bschools">
+    <div class="hero">
+      <h1 id="bschoolsTitle">全球十大商学院 · 300门精选课程</h1>
+      <p id="bschoolsDesc">整合全球顶尖10所商学院的300门精选课程，涵盖战略管理、金融投资、市场营销、领导力、创业创新、数据分析、全球化运营等领域。为地球村学员提供世界级商科教育资源，与地球村商学院100门课程互为补充。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">10</div><div class="label">商学院</div></div>
+        <div class="hero-stat"><div class="num">300</div><div class="label">精选课程</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="label">课程领域</div></div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="bschoolSearch" placeholder="搜索学校或课程...">
+      <select class="category-filter" id="bschoolFilter" onchange="filterBSchools()">
+        <option value="all">全部学校</option>
+      </select>
+      <select class="category-filter" id="bschoolCatFilter" onchange="filterBSchools()">
+        <option value="all">全部领域</option>
+      </select>
+      <span class="result-count" id="bschoolResultCount"></span>
+    </div>
+
+    <div class="course-grid" id="bschoolGrid"></div>
+  </section>
+
+  <!-- ===== Energy Section ===== -->
+  <section class="section" id="section-energy">
+    <div class="hero">
+      <h1 id="energyTitle">地球村能源学院</h1>
+      <p id="energyDesc">面向全球人类自学推荐的能源公开课程，涵盖可再生能源、核能、氢能、储能、智能电网、碳管理、太空能源、石油天然气、能源地缘政治与气候变化等前沿领域。碳基文明的能源转型之路，也是通向星际文明的基石。</p>
+    </div>
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="energySearch" placeholder="搜索能源课程...">
+      <span class="result-count" id="energyResultCount"></span>
+    </div>
+    <div class="course-grid" id="energyGrid"></div>
+  </section>
+
+  <!-- ===== Books Section ===== -->
+  <section class="section" id="section-books">
+    <div class="hero">
+      <h1 id="booksTitle">100本能源行业书籍</h1>
+      <p id="booksDesc">为海外华商精选的100本能源行业书籍，覆盖能源通史、石油天然气、可再生能源、核能、氢能、太空能源、能源投资与商业管理。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label">书籍</div></div>
+        <div class="hero-stat"><div class="num">20+</div><div class="label">分类</div></div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="bookSearch" placeholder="搜索书名、作者...">
+      <span class="result-count" id="bookResultCount"></span>
+    </div>
+    <div class="books-grid" id="booksGrid"></div>
+  </section>
+
+  <!-- ===== Study Plan Section ===== -->
+  <section class="section" id="section-plan">
+    <div class="hero">
+      <h1 id="planTitle">100天自学计划表</h1>
+      <p id="planDesc">精简版100天自学计划，10个阶段循序渐进，从经济学基础到星际文明，构建面向未来的知识体系。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100</div><div class="label">天数</div></div>
+        <div class="hero-stat"><div class="num">10</div><div class="label">阶段</div></div>
+      </div>
+    </div>
+    <div class="plan-container" id="planContainer"></div>
+  </section>
+
+  <!-- ===== Contribute Section ===== -->
+  <section class="section" id="section-contribute">
+    <div class="hero">
+      <h1 id="contributeTitle">🤝 共建共享公开课</h1>
+      <p id="contributeDesc">地球村网友们，一起来共建共享公开课！这是一个开放的公益教育平台，每个人都可以贡献知识、分享课程、参与编辑。无论你是行业专家、学者、教师，还是热心的学习者，都欢迎加入我们的公益编辑团队，共同打造面向全球人类的公开课。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">100+</div><div class="label">公开课目标</div></div>
+        <div class="hero-stat"><div class="num">∞</div><div class="label">共建者</div></div>
+        <div class="hero-stat"><div class="num">🌍</div><div class="label">全球开放</div></div>
+      </div>
+    </div>
+
+    <div class="contribute-grid">
+      <div class="contribute-card">
+        <div class="contribute-icon">📝</div>
+        <h3 id="contributeCard1Title">贡献课程内容</h3>
+        <p id="contributeCard1Desc">撰写新课程、优化现有课程内容、翻译多语言版本。每一份贡献都会让地球村的学习资源更丰富。</p>
+      </div>
+      <div class="contribute-card">
+        <div class="contribute-icon">🔍</div>
+        <h3 id="contributeCard2Title">审校与编辑</h3>
+        <p id="contributeCard2Desc">审校课程内容的准确性、时效性，确保知识质量。我们相信群体智慧能打造最好的公开课。</p>
+      </div>
+      <div class="contribute-card">
+        <div class="contribute-icon">💡</div>
+        <h3 id="contributeCard3Title">推荐选题</h3>
+        <p id="contributeCard3Desc">推荐你认为重要的课程主题，帮助地球村课程体系覆盖更多前沿领域和实用知识。</p>
+      </div>
+      <div class="contribute-card">
+        <div class="contribute-icon">🌐</div>
+        <h3 id="contributeCard4Title">多语言翻译</h3>
+        <p id="contributeCard4Desc">帮助将课程翻译成更多语言，让地球村的每一个角落都能无障碍学习。中文、英语、法语、西班牙语、阿拉伯语、俄语、缅甸语。</p>
+      </div>
+    </div>
+
+    <div class="contribute-cta">
+      <a href="https://ucoingroup.github.io/Earth-Village-School" target="_blank" rel="noopener" class="contribute-btn">
+        <span id="contributeBtnText">🌐 访问共建共享公开课平台</span>
+      </a>
+      <a href="mailto:eaco2cc@gmail.com" class="contribute-btn contribute-btn-email">
+        <span id="contributeEmailBtnText">✉️ 联系公益编辑邮箱</span>
+      </a>
+      <p class="contribute-email-text">
+        <span id="contributeEmailLabel">公益编辑邮箱：</span>
+        <a href="mailto:eaco2cc@gmail.com">eaco2cc@gmail.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== AI Tools Section ===== -->
+  <section class="section" id="section-ai-tools">
+    <div class="hero">
+      <h1 id="aiToolsTitle">🤖 AI 工具集成平台</h1>
+      <p id="aiToolsDesc">集成全球前10大开源AI系统的免费额度API，为地球村学员提供智能学习助手。无需付费即可使用DeepSeek、Qwen、Llama、Gemini等顶尖AI模型，辅助课程学习、知识问答、内容创作与多语言翻译。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">10</div><div class="label">AI系统</div></div>
+        <div class="hero-stat"><div class="num">免费</div><div class="label">免费额度</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label">语言支持</div></div>
+      </div>
+    </div>
+
+    <div class="ai-tools-preview">
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🔮</div>
+        <h3 class="ai-tool-name">DeepSeek</h3>
+        <p class="ai-tool-desc">深度求索，每月500万Token免费额度</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🌐</div>
+        <h3 class="ai-tool-name">Qwen</h3>
+        <p class="ai-tool-desc">阿里云通义千问，100万Token新用户免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🦙</div>
+        <h3 class="ai-tool-name">Llama</h3>
+        <p class="ai-tool-desc">Meta开源大模型，Groq平台每日14,400次请求</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">♊</div>
+        <h3 class="ai-tool-name">Gemini</h3>
+        <p class="ai-tool-desc">Google Gemini，Flash每日1500次免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🌟</div>
+        <h3 class="ai-tool-name">GLM</h3>
+        <p class="ai-tool-desc">智谱AI，GLM-4-Flash完全免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🌪️</div>
+        <h3 class="ai-tool-name">Mistral</h3>
+        <p class="ai-tool-desc">法国Mistral AI，每月50万Token免费</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🎨</div>
+        <h3 class="ai-tool-name">DALL-E / SD</h3>
+        <p class="ai-tool-desc">AI图像生成，每月15张免费+本地部署</p>
+      </div>
+      <div class="ai-tool-card">
+        <div class="ai-tool-icon">🎙️</div>
+        <h3 class="ai-tool-name">Whisper</h3>
+        <p class="ai-tool-desc">OpenAI语音转录，Groq平台免费使用</p>
+      </div>
+    </div>
+
+    <div class="ai-tools-cta">
+      <a href="my-ai-tools.html" class="ai-tools-btn">
+        <span id="aiToolsBtnText">🚀 进入 AI 工具平台</span>
+      </a>
+      <p class="ai-tools-note" id="aiToolsNote">支持文本对话、图像生成、语音转录等多种AI能力</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- ===== Wisdom Books Section ===== -->
+  <section class="section" id="section-wisdom">
+    <div class="hero">
+      <h1 id="wisdomTitle">🧠 地球村智慧书库 · 60本经典</h1>
+      <p id="wisdomDesc">人类文明的智慧结晶，60本影响世界的经典著作，涵盖决策与判断、人际与社会、自我成长与心态、经济规律洞察、历史与文明、底层逻辑认知六大维度。每一本都是照亮前行之路的灯塔，为地球村公民提供深邃的思想资源。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">60</div><div class="label">经典书籍</div></div>
+        <div class="hero-stat"><div class="num">6</div><div class="label">维度分类</div></div>
+        <div class="hero-stat"><div class="num">7</div><div class="label">多语言</div></div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <input type="text" class="search-input" id="wisdomSearch" placeholder="搜索书名、作者...">
+      <select class="category-filter" id="wisdomFilter" onchange="filterWisdom()">
+        <option value="all">全部分类</option>
+        <option value="decision">🧩 决策与判断</option>
+        <option value="interpersonal">👥 人际与社会</option>
+        <option value="growth">🌱 自我成长与心态</option>
+        <option value="economics">💰 经济规律洞察</option>
+        <option value="history">📜 历史与文明</option>
+        <option value="cognition">🔬 底层逻辑认知</option>
+      </select>
+      <span class="result-count" id="wisdomResultCount"></span>
+    </div>
+    <div class="course-grid" id="wisdomGrid"></div>
+  </section>
+
+  <!-- ===== Awakening Section ===== -->
+  <section class="section" id="section-awakening">
+    <div class="hero">
+      <h1 id="awakeningTitle">🌅 地球村人类文明觉醒</h1>
+      <p id="awakeningDesc">当人类文明从沉睡中觉醒，会发生什么？从零和博弈到正和共生，从无限增长到可持续发展，从地球封闭到星际开放——文明觉醒不是一场革命，而是人类意识的一次集体跃迁。</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">12</div><div class="label">维度变化</div></div>
+        <div class="hero-stat"><div class="num">4</div><div class="label">觉醒阶段</div></div>
+        <div class="hero-stat"><div class="num">∞</div><div class="label">未来可能</div></div>
+      </div>
+    </div>
+    <div class="awakening-intro" id="awakeningIntro"></div>
+    <div class="awakening-grid" id="awakeningGrid"></div>
+    <div class="awakening-phases" id="awakeningPhases"></div>
+    <div class="awakening-conclusion" id="awakeningConclusion"></div>
+  </section>
+
+</div>
+
+<!-- ===== Course Detail Modal ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-title" id="footerTitle">🔗 ကမ္ဘာ့ကျေးရွာဂေဟစနစ်လင့်ခ်များ</div>
+    <div class="footer-links" id="footerLinks"></div>
+    <div class="footer-copy">
+      <span>© 2024-2026 ကမ္ဘာ့ကျေးရွာစီးပွားရေးကျောင်း</span><br>
+      <span>ဂြိုဟ်စုံယဉ်ကျေးမှုအတွက် ပွင့်လင်းသောဗဟုသုတ</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Scripts ===== -->
+<script src="i18n.js"></script>
+<script src="courses.js"></script>
+<script src="bschools.js"></script>
+<script src="books.js"></script>
+<script src="wisdom-books.js"></script>
+<script src="awakening.js"></script>
+<script src="plan.js"></script>
+<script src="app.js"></script>
+
+
+<script>
+// Override switchLang to redirect to corresponding language file
+(function() {
+  var pageName = 'index';
+  var currentLang = 'my';
+  // Set language immediately
+  try { localStorage.setItem('ev-lang', currentLang); } catch(e) {}
+  window.currentLang = currentLang;
+
+  // Wait for switchLang to be defined, then override it
+  var checkCount = 0;
+  var interval = setInterval(function() {
+    checkCount++;
+    if (typeof switchLang === 'function' || checkCount > 50) {
+      clearInterval(interval);
+      // Override switchLang to redirect
+      window.switchLang = function(targetLang) {
+        try { localStorage.setItem('ev-lang', targetLang); } catch(e) {}
+        var prefix = targetLang === 'zh' ? '' : (targetLang + '-');
+        window.location.href = prefix + pageName + '.html';
+      };
+      // Update active state in dropdown
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.lang-option, #langMenu a').forEach(function(el) {
+          var dl = el.getAttribute('data-lang');
+          if (dl) {
+            el.classList.toggle('active', dl === currentLang);
+            el.setAttribute('onclick', "switchLang('" + dl + "')");
+          }
+        });
+      });
+    }
+  }, 10);
+})();
+</script>
+</body>
+</html>
