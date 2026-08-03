@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
   <style>
-    /* ===== SKILL Page Specific Styles ===== */
+    /* ===== SKILL页面专属样式 ===== */
     .skills-hero {
       text-align: center;
       padding: 3rem 2rem 2rem;
@@ -367,10 +367,10 @@
 </head>
 <body>
 
-<!-- Stars Background -->
+<!-- 星空背景 -->
 <canvas class="stars-bg" id="starsCanvas"></canvas>
 
-<!-- ===== Navbar ===== -->
+<!-- ===== 导航栏 ===== -->
 <nav class="navbar">
   <div class="navbar-inner">
     <div class="navbar-brand" onclick="switchSection('courses')">
@@ -388,19 +388,19 @@
         <button class="lang-btn" onclick="toggleLangMenu()" id="langBtnText">7种语言</button>
         <div class="lang-menu" id="langMenu">
           <a href="javascript:void(0)" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</a>
-          <a href="javascript:void(0)" onclick="switchLang('en')" data-lang="en">🇬🇧 English</a>
-          <a href="javascript:void(0)" onclick="switchLang('fr')" data-lang="fr">🇫🇷 Français</a>
-          <a href="javascript:void(0)" onclick="switchLang('es')" data-lang="es">🇪🇸 Español</a>
-          <a href="javascript:void(0)" onclick="switchLang('ar')" data-lang="ar">🇸🇦 العربية</a>
-          <a href="javascript:void(0)" onclick="switchLang('ru')" data-lang="ru">🇷🇺 Русский</a>
-          <a href="javascript:void(0)" onclick="switchLang('my')" data-lang="my">🇲🇲 မြန်မာ</a>
+          <a href="javascript:void(0)" onclick="switchLang('en')" data-lang="en">🇬🇧 英语</a>
+          <a href="javascript:void(0)" onclick="switchLang('fr')" data-lang="fr">🇫🇷 法语</a>
+          <a href="javascript:void(0)" onclick="switchLang('es')" data-lang="es">🇪🇸 西班牙语</a>
+          <a href="javascript:void(0)" onclick="switchLang('ar')" data-lang="ar">🇸🇦 阿拉伯语</a>
+          <a href="javascript:void(0)" onclick="switchLang('ru')" data-lang="ru">🇷🇺 俄语</a>
+          <a href="javascript:void(0)" onclick="switchLang('my')" data-lang="my">🇲🇲 缅甸语</a>
         </div>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- ===== Hero ===== -->
+<!-- ===== 英雄区 ===== -->
 <div class="skills-hero">
   <h1>🎯 地球村商学院 30 组标准化 SKILL</h1>
   <p>适配100门公开课体系，每周自动同步更新。三类技能覆盖地球村商业、星际文明拓展与通用备用赛道。</p>
@@ -412,18 +412,18 @@
   </div>
 </div>
 
-<!-- ===== Search ===== -->
+<!-- ===== 搜索区 ===== -->
 <div class="skills-search">
   <input type="text" id="skillSearch" placeholder="🔍 搜索SKILL标识符、名称、关键词..." oninput="filterSkills()">
 </div>
 
-<!-- ===== Skills Container ===== -->
+<!-- ===== 技能容器 ===== -->
 <div id="skillsContainer"></div>
 
-<!-- ===== Update Rules ===== -->
+<!-- ===== 更新规则 ===== -->
 <div class="skills-rules" id="skillsRules"></div>
 
-<!-- ===== Footer ===== -->
+<!-- ===== 页脚 ===== -->
 <footer class="footer" style="padding: 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 3rem;">
   <p style="color: var(--text-muted); margin-bottom: 1rem;">🔗 地球村生态链接</p>
   <div class="footer-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
@@ -441,7 +441,7 @@
   <p style="color: var(--text-dim); margin-top: 1.5rem; font-size: 0.85rem;"><span>© 2024-2026 地球村商学院</span> | <span>面向多行星文明的开放知识</span></p>
 </footer>
 
-<!-- ===== Detail Modal ===== -->
+<!-- ===== 详情弹窗 ===== -->
 <div class="skill-modal-overlay" id="skillModal" onclick="closeModal(event)">
   <div class="skill-modal" onclick="event.stopPropagation()">
     <button class="skill-modal-close" onclick="closeModal()">✕</button>
@@ -453,11 +453,11 @@
   </div>
 </div>
 
-<!-- ===== Scripts ===== -->
+<!-- ===== 脚本 ===== -->
 <script src="i18n.js"></script>
 <script src="skills-data.js"></script>
 <script>
-// ===== Theme =====
+// ===== 主题 =====
 function switchTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('ev-theme', theme);
@@ -466,17 +466,17 @@ function switchTheme(theme) {
   });
 }
 
-// Init theme
+// 初始化主题
 const savedTheme = localStorage.getItem('ev-theme') || 'cosmic';
 switchTheme(savedTheme);
 
-// ===== Language Switcher =====
+// ===== 语言切换器 =====
 function toggleLangMenu() {
   var menu = document.getElementById('langMenu');
   if (menu) menu.classList.toggle('show');
 }
 
-// Close language menu when clicking outside
+// 点击外部关闭语言菜单
 document.addEventListener('click', function(e) {
   var menu = document.getElementById('langMenu');
   var btn = document.getElementById('langBtnText');
@@ -485,7 +485,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Update lang button text
+// 更新语言按钮文本
 function updateLangBtn() {
   var btn = document.getElementById('langBtnText');
   if (!btn) return;
@@ -493,7 +493,7 @@ function updateLangBtn() {
   btn.textContent = langNames[window.currentLang] || '🌐 中文';
 }
 
-// ===== i18n helper =====
+// ===== 国际化辅助函数 =====
 function ti(key) {
   if (!window.I18N || !window.currentLang) return key;
   var lang = window.currentLang;
@@ -501,7 +501,7 @@ function ti(key) {
   return dict[key] || (window.I18N.en && window.I18N.en[key]) || (window.I18N.zh && window.I18N.zh[key]) || key;
 }
 
-// ===== Render Skills =====
+// ===== 渲染技能 =====
 window.renderSkills = function(filter) {
   filter = filter || '';
   var container = document.getElementById('skillsContainer');
@@ -557,13 +557,13 @@ window.renderSkills = function(filter) {
   container.innerHTML = html;
 };
 
-// ===== Filter =====
+// ===== 筛选 =====
 function filterSkills() {
   var input = document.getElementById('skillSearch');
   if (input) window.renderSkills(input.value);
 }
 
-// ===== Modal =====
+// ===== 弹窗 =====
 function openModal(skillId) {
   var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
   var skills = SKILLS[lang] || SKILLS.zh;
@@ -602,7 +602,7 @@ function closeModal(event) {
   document.body.style.overflow = '';
 }
 
-// ===== Render Rules =====
+// ===== 渲染规则 =====
 function renderRules() {
   var lang = (window.currentLang === 'zh') ? 'zh' : 'en';
   var rules = SKILL_UPDATE_RULES[lang] || SKILL_UPDATE_RULES.zh;
@@ -618,32 +618,32 @@ function renderRules() {
     '</ul>';
 }
 
-// ===== Apply i18n for skills page =====
+// ===== 应用技能页面国际化 =====
 function applySkillsI18n() {
-  // Update search placeholder
+  // 更新搜索占位符
   var searchInput = document.getElementById('skillSearch');
   if (searchInput) {
     searchInput.setAttribute('placeholder', ti('skillSearchPh'));
   }
-  // Update lang button
+  // 更新语言按钮
   updateLangBtn();
-  // Update active lang menu item
+  // 更新活跃语言菜单项
   document.querySelectorAll('#langMenu a').forEach(function(a) {
     a.classList.toggle('active', a.getAttribute('data-lang') === window.currentLang);
   });
-  // Re-render dynamic content
+  // 重新渲染动态内容
   window.renderSkills();
   renderRules();
 }
 
-// Override applyTranslations to also update skills page
+// 覆盖applyTranslations以同时更新技能页面
 var origApplyTranslations = window.applyTranslations || function() {};
 window.applyTranslations = function(lang) {
   origApplyTranslations(lang);
   applySkillsI18n();
 };
 
-// ===== Stars Animation =====
+// ===== 星空动画 =====
 (function initStars() {
   var canvas = document.getElementById('starsCanvas');
   if (!canvas) return;
@@ -683,18 +683,18 @@ window.applyTranslations = function(lang) {
   window.addEventListener('resize', resize);
 })();
 
-// ===== Init =====
-// Apply on DOMContentLoaded (i18n.js already does this, but we also need to apply skills-specific updates)
+// ===== 初始化 =====
+// 在DOMContentLoaded时应用（i18n.js已处理，但还需应用技能专属更新）
 document.addEventListener('DOMContentLoaded', function() {
   applySkillsI18n();
 });
 
-// Also apply immediately if DOM is already loaded
+// 如果DOM已加载则立即应用
 if (document.readyState !== 'loading') {
   applySkillsI18n();
 }
 
-// Keyboard: ESC to close modal
+// 键盘：ESC关闭弹窗
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
